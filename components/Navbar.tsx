@@ -7,7 +7,7 @@ const NAV_LINKS = [
   { href: "/#calendrier", label: "Calendrier" },
   { href: "/#eligibilite", label: "Éligibilité" },
   { href: "/#prix", label: "Prix" },
-  { href: "/reglement.pdf", label: "Règlement", external: true },
+  { href: "/reglement", label: "Règlement" },
 ];
 
 export default function Navbar() {

@@ -4,7 +4,6 @@ import CountdownTimer from "@/components/CountdownTimer";
 
 const CALENDRIER = [
   { date: "12 sept. 2026", event: "Lancement officiel", detail: "Ouverture des candidatures, 10h00", done: true },
-  { date: "18 sept. 2026", event: "Webinaire informatif", detail: "18h00 — présentation du règlement et Q&R", done: false },
   { date: "15 oct. 2026", event: "Clôture des candidatures", detail: "23h59, sans prolongation (Art. 5)", done: false, highlight: true },
   { date: "16–25 oct.", event: "Présélection sur dossier", detail: "Évaluation par la commission de présélection", done: false },
   { date: "28 oct. 2026", event: "Annonce des finalistes", detail: "6 à 10 startups retenues", done: false },
@@ -78,9 +77,9 @@ export default function Home() {
                       <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
                     </svg>
                   </Link>
-                  <a href="/reglement.pdf" target="_blank" rel="noopener noreferrer" className="btn-ghost text-sm">
+                  <Link href="/reglement" className="btn-ghost text-sm">
                     Lire le règlement
-                  </a>
+                  </Link>
                 </div>
 
                 {/* Compte à rebours */}
@@ -110,12 +109,6 @@ export default function Home() {
                     ))}
                   </ul>
 
-                  <div className="bg-earth-100 border border-earth-400/20 rounded-md p-3.5">
-                    <div className="text-xs font-bold text-earth-700 mb-1">Webinaire informatif</div>
-                    <div className="text-sm text-earth-800">
-                      <strong>18 septembre 2026, 18h00</strong> — présentation du règlement et questions-réponses.
-                    </div>
-                  </div>
                 </div>
               </div>
             </div>
@@ -264,7 +257,7 @@ export default function Home() {
             <div>3ème édition du Salon de l'Économie Verte, Finance Responsable et Développement Durable</div>
           </div>
           <div className="flex gap-5">
-            <a href="/reglement.pdf" className="hover:text-leaf-300 transition-colors">Règlement</a>
+            <Link href="/reglement" className="hover:text-leaf-300 transition-colors">Règlement</Link>
             <Link href="/#faq" className="hover:text-leaf-300 transition-colors">FAQ</Link>
             <a href="mailto:contact@ia4earth.tn" className="hover:text-leaf-300 transition-colors">Contact</a>
           </div>
