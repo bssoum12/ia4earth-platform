@@ -26,7 +26,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(
     (() => {
       const u = process.env.NEXT_PUBLIC_APP_URL ?? "";
-      return u.startsWith("http") ? u : "https://candidatures.ia4earth.tn";
+      return u.startsWith("http") ? u : "https://challenge.salondedeveloppementdurable.com";
     })()
   ),
   title: "IA4EARTH Startup Challenge — Candidatures",
