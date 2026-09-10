@@ -88,20 +88,20 @@ export default function ApplicationForm() {
 
     try {
       const res = await fetch("/api/candidatures", { method: "POST", body: fd });
-      let json: { message?: string } = {};
+      let json: { message?: string; numero_dossier?: string } = {};
       try { json = await res.json(); } catch { /* réponse non-JSON (erreur serveur 500) */ }
 
       if (!res.ok) {
         // Vérifier si les candidatures sont closes (410)
         if (res.status === 410) {
-          setApiError(json.message);
+          setApiError(json.message ?? "Les candidatures sont closes.");
         } else {
           setApiError(json.message ?? "Une erreur est survenue. Veuillez réessayer.");
         }
         return;
       }
 
-      router.push(`/candidater/confirmation?dossier=${json.numero_dossier}`);
+      router.push(`/candidater/confirmation?dossier=${json.numero_dossier ?? ""}`);
     } catch {
       setApiError("Erreur réseau — vérifiez votre connexion et réessayez.");
     } finally {
