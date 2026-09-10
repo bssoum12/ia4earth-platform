@@ -348,10 +348,13 @@ export default function Home() {
             <div className="font-semibold text-leaf-100/60 mb-0.5">IA4EARTH Startup Challenge</div>
             <div>3ème édition du Salon de l'Économie Verte, Finance Responsable et Développement Durable</div>
           </div>
-          <div className="flex gap-5">
+          <div className="flex flex-wrap gap-5 items-center">
             <Link href="/reglement" className="hover:text-leaf-300 transition-colors">Règlement</Link>
             <Link href="/#faq" className="hover:text-leaf-300 transition-colors">FAQ</Link>
             <Link href="/contact" className="hover:text-leaf-300 transition-colors">Contact</Link>
+            <Link href="/jury" className="border border-leaf-400/20 rounded px-2.5 py-1 text-leaf-400/60 hover:text-leaf-300 hover:border-leaf-400/40 transition-colors text-xs font-medium">
+              Espace jury
+            </Link>
           </div>
         </div>
       </footer>
