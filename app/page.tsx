@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import CountdownTimer from "@/components/CountdownTimer";
+import FaqAccordion from "@/components/FaqAccordion";
 
 const CALENDRIER = [
   { date: "12 sept. 2026", event: "Lancement officiel", detail: "Ouverture des candidatures, 10h00", done: true },
@@ -291,6 +292,28 @@ export default function Home() {
                   </li>
                 ))}
               </ol>
+            </div>
+          </div>
+        </section>
+
+        {/* ===== FAQ ===== */}
+        <section id="faq" className="py-16 sm:py-20 bg-white">
+          <div className="max-w-6xl mx-auto px-4 sm:px-6">
+            <div className="max-w-xl mb-10">
+              <h2 className="font-display text-3xl font-bold text-forest-900 mb-3">Questions fréquentes</h2>
+              <p className="text-forest-700/70">
+                Tout ce que vous devez savoir avant de candidater.
+              </p>
+            </div>
+            <div className="max-w-3xl">
+              <FaqAccordion />
+              <p className="mt-8 text-sm text-forest-700/50">
+                Une question non couverte ici ?{" "}
+                <a href="mailto:contact@ia4earth.tn" className="text-forest-700 underline underline-offset-2 hover:text-earth-700 transition-colors">
+                  Écrivez-nous
+                </a>{" "}
+                — nous répondons sous 48h.
+              </p>
             </div>
           </div>
         </section>
