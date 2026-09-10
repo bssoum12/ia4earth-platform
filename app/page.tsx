@@ -115,22 +115,62 @@ export default function Home() {
           </div>
         </section>
 
-        {/* ===== BAND DATES CLÉS ===== */}
-        <div className="bg-forest-900 text-white py-9">
-          <div className="max-w-6xl mx-auto px-4 sm:px-6">
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 sm:gap-8">
-              {[
-                { n: "12 sept.", l: "Ouverture des candidatures" },
-                { n: "16–25 oct.", l: "Présélection sur dossier" },
-                { n: "28 oct.", l: "Annonce des finalistes" },
-                { n: "5–6 nov.", l: "Finale & remise des prix" },
-              ].map(({ n, l }) => (
-                <div key={n}>
-                  <span className="font-display font-bold text-xl sm:text-2xl text-leaf-300 block">{n}</span>
-                  <span className="text-xs sm:text-sm text-leaf-100/50 mt-1 block">{l}</span>
+        {/* ===== FRISE CHRONOLOGIQUE ===== */}
+        <div className="bg-forest-900 text-white py-10 overflow-x-auto">
+          <div className="max-w-6xl mx-auto px-4 sm:px-6 min-w-[600px]">
+            {(() => {
+              const steps = [
+                { date: "12 sept.", label: "Ouverture", sub: "Candidatures ouvertes", done: true },
+                { date: "15 oct.", label: "Clôture", sub: "23h59 — sans prolongation", highlight: true },
+                { date: "28 oct.", label: "Finalistes", sub: "Annonce des sélectionnés" },
+                { date: "5–6 nov.", label: "Finale", sub: "Pitchs & remise des prix" },
+              ];
+              return (
+                <div className="relative flex items-start justify-between gap-0">
+                  {/* Ligne de connexion */}
+                  <div className="absolute top-[22px] left-[5%] right-[5%] h-px bg-forest-700" aria-hidden />
+                  {/* Ligne de progression (12 sept → 15 oct passé) */}
+                  <div className="absolute top-[22px] left-[5%] w-[30%] h-px bg-leaf-400" aria-hidden />
+
+                  {steps.map((s, i) => (
+                    <div key={i} className="relative flex flex-col items-center text-center flex-1 px-2">
+                      {/* Dot */}
+                      <div
+                        className={`
+                          relative z-10 w-11 h-11 rounded-full flex items-center justify-center mb-3 border-2 shrink-0
+                          ${s.done
+                            ? "bg-leaf-400 border-leaf-400"
+                            : s.highlight
+                            ? "bg-earth-700 border-earth-600 shadow-lg shadow-earth-700/40"
+                            : "bg-forest-800 border-forest-600"}
+                        `}
+                      >
+                        {s.done ? (
+                          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden>
+                            <path d="M3.5 8l3 3 6-6" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                          </svg>
+                        ) : (
+                          <span className={`text-xs font-bold font-mono ${s.highlight ? "text-white" : "text-leaf-400"}`}>
+                            {i + 1}
+                          </span>
+                        )}
+                      </div>
+
+                      {/* Date */}
+                      <span className={`font-display font-bold text-base sm:text-lg block leading-none mb-1 ${s.done ? "text-leaf-400" : s.highlight ? "text-earth-400" : "text-white"}`}>
+                        {s.date}
+                      </span>
+                      {/* Label */}
+                      <span className={`text-xs font-bold uppercase tracking-wider block mb-0.5 ${s.highlight ? "text-earth-400" : "text-leaf-100/80"}`}>
+                        {s.label}
+                      </span>
+                      {/* Sous-titre */}
+                      <span className="text-2xs text-leaf-100/40 leading-tight hidden sm:block">{s.sub}</span>
+                    </div>
+                  ))}
                 </div>
-              ))}
-            </div>
+              );
+            })()}
           </div>
         </div>
 
