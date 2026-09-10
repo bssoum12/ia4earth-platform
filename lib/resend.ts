@@ -1,6 +1,6 @@
 import { Resend } from "resend";
 
-export const FROM_EMAIL = process.env.FROM_EMAIL ?? "IA4EARTH Challenge <noreply@ia4earth.tn>";
+export const FROM_EMAIL = process.env.FROM_EMAIL ?? "onboarding@resend.dev";
 export const REPLY_TO   = process.env.REPLY_TO_EMAIL ?? "contact@salondedeveloppementdurable.com";
 
 // Client instancié à la demande pour éviter l'échec au build sans API key
