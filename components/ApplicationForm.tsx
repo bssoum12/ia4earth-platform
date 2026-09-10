@@ -88,7 +88,7 @@ export default function ApplicationForm() {
 
     try {
       const res = await fetch("/api/candidatures", { method: "POST", body: fd });
-      let json: Record<string, unknown> = {};
+      let json: { message?: string } = {};
       try { json = await res.json(); } catch { /* réponse non-JSON (erreur serveur 500) */ }
 
       if (!res.ok) {
