@@ -25,14 +25,14 @@ export default function Home() {
       <main>
 
         {/* ===== HERO ===== */}
-        <section className="relative overflow-hidden" style={{ background: "#060d07", minHeight: "92vh" }}>
+        <section className="relative overflow-hidden" style={{ background: "#0d1f0f", minHeight: "92vh" }}>
           {/* Dot grid */}
-          <div className="absolute inset-0 dot-grid opacity-60" />
+          <div className="absolute inset-0 dot-grid opacity-100" />
 
           {/* Orbes flottantes */}
-          <div className="orb animate-float" style={{ width: 500, height: 500, top: -100, left: -120, background: "radial-gradient(circle, rgba(140,198,63,0.18) 0%, transparent 70%)" }} />
-          <div className="orb animate-float-slow" style={{ width: 400, height: 400, top: 60, right: -80, background: "radial-gradient(circle, rgba(42,191,160,0.14) 0%, transparent 70%)", animationDelay: "2s" }} />
-          <div className="orb" style={{ width: 300, height: 300, bottom: -60, left: "40%", background: "radial-gradient(circle, rgba(140,198,63,0.1) 0%, transparent 70%)", animation: "float 11s ease-in-out infinite", animationDelay: "1s" }} />
+          <div className="orb animate-float" style={{ width: 600, height: 600, top: -150, left: -150, background: "radial-gradient(circle, rgba(140,198,63,0.35) 0%, rgba(140,198,63,0.08) 50%, transparent 70%)" }} />
+          <div className="orb animate-float-slow" style={{ width: 500, height: 500, top: 40, right: -100, background: "radial-gradient(circle, rgba(42,191,160,0.28) 0%, rgba(42,191,160,0.06) 50%, transparent 70%)", animationDelay: "2s" }} />
+          <div className="orb" style={{ width: 350, height: 350, bottom: -80, left: "38%", background: "radial-gradient(circle, rgba(140,198,63,0.22) 0%, transparent 70%)", animation: "float 11s ease-in-out infinite", animationDelay: "1s" }} />
 
           {/* Ligne scanline */}
           <div className="scan-line absolute inset-0 pointer-events-none overflow-hidden" />
@@ -54,10 +54,10 @@ export default function Home() {
                 <span style={{ color: "rgba(255,255,255,0.55)", fontStyle: "italic" }}>Faites-le savoir.</span>
               </h1>
 
-              <p className="text-base sm:text-lg mb-10 max-w-[50ch] leading-relaxed" style={{ color: "rgba(200,230,180,0.6)" }}>
+              <p className="text-base sm:text-lg mb-10 max-w-[50ch] leading-relaxed" style={{ color: "rgba(210,240,190,0.75)" }}>
                 Le IA4EARTH Startup Challenge récompense les startups tunisiennes qui font
                 avancer l'économie verte, la finance responsable et le développement durable —{" "}
-                <strong style={{ color: "rgba(200,230,180,0.9)" }}>avec ou sans intelligence artificielle.</strong>
+                <strong style={{ color: "rgba(230,250,215,0.95)" }}>avec ou sans intelligence artificielle.</strong>
               </p>
 
               <div className="flex flex-wrap gap-3 mb-14">
@@ -133,7 +133,7 @@ export default function Home() {
         </section>
 
         {/* ===== FRISE CHRONOLOGIQUE ===== */}
-        <div className="py-10 overflow-x-auto" style={{ background: "#0a1309", borderTop: "1px solid rgba(140,198,63,0.1)", borderBottom: "1px solid rgba(140,198,63,0.1)" }}>
+        <div className="py-10 overflow-x-auto" style={{ background: "#162b18", borderTop: "1px solid rgba(140,198,63,0.1)", borderBottom: "1px solid rgba(140,198,63,0.1)" }}>
           <div className="max-w-6xl mx-auto px-4 sm:px-6 min-w-[600px]">
             {(() => {
               const steps = [
@@ -179,14 +179,14 @@ export default function Home() {
         </div>
 
         {/* ===== PRIX ===== */}
-        <section id="prix" className="py-20" style={{ background: "#080d08" }}>
+        <section id="prix" className="py-20" style={{ background: "#112214" }}>
           <div className="max-w-6xl mx-auto px-4 sm:px-6">
             <div className="max-w-xl mb-12">
               <div className="ai-tag mb-4">Récompenses</div>
               <h2 className="font-display text-3xl font-bold mb-3" style={{ color: "rgba(255,255,255,0.92)" }}>
                 Ce que vous <span className="text-gradient">gagnez</span>
               </h2>
-              <p style={{ color: "rgba(200,230,180,0.5)" }}>
+              <p style={{ color: "rgba(210,240,190,0.65)" }}>
                 Au-delà de la dotation, un accompagnement pensé pour durer après la cérémonie.
               </p>
             </div>
@@ -196,7 +196,7 @@ export default function Home() {
                 <div key={p.titre} className="glass-card card-3d rounded-xl p-5 cursor-default">
                   <div className="text-3xl mb-4">{p.ico}</div>
                   <h3 className="font-display font-bold text-base mb-2" style={{ color: "rgba(255,255,255,0.9)" }}>{p.titre}</h3>
-                  <p className="text-sm leading-relaxed" style={{ color: "rgba(200,230,180,0.55)" }}>{p.desc}</p>
+                  <p className="text-sm leading-relaxed" style={{ color: "rgba(210,240,190,0.7)" }}>{p.desc}</p>
                 </div>
               ))}
             </div>
@@ -205,14 +205,14 @@ export default function Home() {
               <div>
                 <div className="ai-tag mb-3">Accompagnement post-concours</div>
                 <h3 className="font-display font-bold text-xl mb-2" style={{ color: "rgba(255,255,255,0.9)" }}>Un mentorat qui dure</h3>
-                <p className="text-sm" style={{ color: "rgba(200,230,180,0.55)" }}>
+                <p className="text-sm" style={{ color: "rgba(210,240,190,0.7)" }}>
                   3 à 6 mois d'accompagnement par des mentors issus du réseau du Comité de pilotage
                   et de ses partenaires institutionnels.
                 </p>
               </div>
               <div>
                 <h3 className="font-display font-bold text-xl mb-2" style={{ color: "rgba(255,255,255,0.9)" }}>Un accès direct aux investisseurs</h3>
-                <p className="text-sm" style={{ color: "rgba(200,230,180,0.55)" }}>
+                <p className="text-sm" style={{ color: "rgba(210,240,190,0.7)" }}>
                   Mise en relation structurée avec les investisseurs et partenaires présents au Salon
                   — pas laissée au hasard des couloirs.
                 </p>
@@ -222,14 +222,14 @@ export default function Home() {
         </section>
 
         {/* ===== CALENDRIER ===== */}
-        <section id="calendrier" className="py-20" style={{ background: "#060d07", borderTop: "1px solid rgba(140,198,63,0.08)" }}>
+        <section id="calendrier" className="py-20" style={{ background: "#0d1f0f", borderTop: "1px solid rgba(140,198,63,0.08)" }}>
           <div className="max-w-6xl mx-auto px-4 sm:px-6">
             <div className="max-w-xl mb-12">
               <div className="ai-tag mb-4">Timeline</div>
               <h2 className="font-display text-3xl font-bold mb-3" style={{ color: "rgba(255,255,255,0.92)" }}>
                 Calendrier du <span className="text-gradient">concours</span>
               </h2>
-              <p style={{ color: "rgba(200,230,180,0.5)" }}>
+              <p style={{ color: "rgba(210,240,190,0.65)" }}>
                 Le calendrier s'applique sans exception — toute modification est communiquée par voie électronique.
               </p>
             </div>
@@ -263,7 +263,7 @@ export default function Home() {
                         <span className="font-semibold text-base block mb-0.5" style={{ color: item.highlight ? "#C46060" : "rgba(255,255,255,0.85)" }}>
                           {item.event}
                         </span>
-                        <span className="text-sm" style={{ color: "rgba(200,230,180,0.4)" }}>{item.detail}</span>
+                        <span className="text-sm" style={{ color: "rgba(210,240,190,0.6)" }}>{item.detail}</span>
                       </div>
                     </div>
                   </li>
@@ -274,14 +274,14 @@ export default function Home() {
         </section>
 
         {/* ===== FAQ ===== */}
-        <section id="faq" className="py-20" style={{ background: "#080d08", borderTop: "1px solid rgba(140,198,63,0.08)" }}>
+        <section id="faq" className="py-20" style={{ background: "#112214", borderTop: "1px solid rgba(140,198,63,0.08)" }}>
           <div className="max-w-6xl mx-auto px-4 sm:px-6">
             <div className="max-w-xl mb-12">
               <div className="ai-tag mb-4">FAQ</div>
               <h2 className="font-display text-3xl font-bold mb-3" style={{ color: "rgba(255,255,255,0.92)" }}>
                 Questions <span className="text-gradient">fréquentes</span>
               </h2>
-              <p style={{ color: "rgba(200,230,180,0.5)" }}>
+              <p style={{ color: "rgba(210,240,190,0.65)" }}>
                 Tout ce que vous devez savoir avant de candidater.
               </p>
             </div>
@@ -299,7 +299,7 @@ export default function Home() {
         </section>
 
         {/* ===== CTA FINAL ===== */}
-        <section className="py-20 relative overflow-hidden" style={{ background: "#060d07", borderTop: "1px solid rgba(140,198,63,0.1)" }}>
+        <section className="py-20 relative overflow-hidden" style={{ background: "#0d1f0f", borderTop: "1px solid rgba(140,198,63,0.1)" }}>
           <div className="orb" style={{ width: 600, height: 600, top: "50%", left: "50%", transform: "translate(-50%,-50%)", background: "radial-gradient(circle, rgba(140,198,63,0.12) 0%, transparent 65%)" }} />
           <div className="scan-line absolute inset-0 pointer-events-none overflow-hidden" />
           <div className="relative max-w-6xl mx-auto px-4 sm:px-6 text-center">
@@ -309,7 +309,7 @@ export default function Home() {
             <h2 className="font-display font-black mb-4" style={{ fontSize: "clamp(2rem,4vw,3.2rem)", color: "rgba(255,255,255,0.95)" }}>
               Prêt à <span className="text-gradient">concourir</span> ?
             </h2>
-            <p className="text-base mb-10 max-w-lg mx-auto" style={{ color: "rgba(200,230,180,0.5)" }}>
+            <p className="text-base mb-10 max-w-lg mx-auto" style={{ color: "rgba(210,240,190,0.65)" }}>
               Comptez environ 20 minutes pour remplir le formulaire.
             </p>
             <Link href="/candidater" className="btn-ai text-sm inline-flex mx-auto">
@@ -323,10 +323,10 @@ export default function Home() {
       </main>
 
       {/* Footer */}
-      <footer style={{ background: "#040a05", borderTop: "1px solid rgba(140,198,63,0.1)" }} className="py-8">
+      <footer style={{ background: "#0d1f0f", borderTop: "1px solid rgba(140,198,63,0.1)" }} className="py-8">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 text-sm" style={{ color: "rgba(200,230,180,0.3)" }}>
           <div>
-            <div className="font-semibold mb-0.5" style={{ color: "rgba(200,230,180,0.55)" }}>IA4EARTH Startup Challenge</div>
+            <div className="font-semibold mb-0.5" style={{ color: "rgba(210,240,190,0.7)" }}>IA4EARTH Startup Challenge</div>
             <div>3ème édition du Salon de l'Économie Verte, Finance Responsable et Développement Durable</div>
           </div>
           <div className="flex flex-wrap gap-5 items-center">

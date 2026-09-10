@@ -237,22 +237,22 @@
 
   /* Glassmorphism card */
   .glass-card {
-    background: rgba(22, 55, 24, 0.45);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border: 1px solid rgba(140, 198, 63, 0.18);
+    background: rgba(30, 70, 32, 0.55);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid rgba(140, 198, 63, 0.28);
     box-shadow:
-      0 4px 32px rgba(0,0,0,0.4),
-      inset 0 1px 0 rgba(140,198,63,0.1);
+      0 4px 32px rgba(0,0,0,0.35),
+      inset 0 1px 0 rgba(140,198,63,0.18);
   }
 
   /* Neon glow on hover */
   .glass-card:hover {
-    border-color: rgba(140, 198, 63, 0.4);
+    border-color: rgba(140, 198, 63, 0.55);
     box-shadow:
-      0 8px 48px rgba(0,0,0,0.5),
-      0 0 20px rgba(140,198,63,0.15),
-      inset 0 1px 0 rgba(140,198,63,0.2);
+      0 8px 48px rgba(0,0,0,0.4),
+      0 0 28px rgba(140,198,63,0.2),
+      inset 0 1px 0 rgba(140,198,63,0.3);
   }
 
   /* 3D tilt card */
@@ -299,7 +299,7 @@
 
   /* Dot grid background */
   .dot-grid {
-    background-image: radial-gradient(rgba(140,198,63,0.15) 1px, transparent 1px);
+    background-image: radial-gradient(rgba(140,198,63,0.28) 1px, transparent 1px);
     background-size: 28px 28px;
   }
 
