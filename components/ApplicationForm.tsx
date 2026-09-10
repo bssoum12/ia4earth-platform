@@ -88,7 +88,8 @@ export default function ApplicationForm() {
 
     try {
       const res = await fetch("/api/candidatures", { method: "POST", body: fd });
-      const json = await res.json();
+      let json: Record<string, unknown> = {};
+      try { json = await res.json(); } catch { /* réponse non-JSON (erreur serveur 500) */ }
 
       if (!res.ok) {
         // Vérifier si les candidatures sont closes (410)

@@ -15,7 +15,19 @@ function getIp(req: NextRequest): string {
   return req.headers.get("x-forwarded-for")?.split(",")[0].trim() ?? "unknown";
 }
 
-export async function POST(req: NextRequest) {
+export async function POST(req: NextRequest): Promise<NextResponse> {
+  try {
+    return await _handlePost(req);
+  } catch (err) {
+    console.error("[candidatures] unhandled error", err);
+    return NextResponse.json(
+      { error: "SERVER_ERROR", message: "Erreur serveur interne — veuillez réessayer." },
+      { status: 500 }
+    );
+  }
+}
+
+async function _handlePost(req: NextRequest): Promise<NextResponse> {
   // ============================================================
   // RÈGLE MÉTIER CRITIQUE (Art. 5) : vérification côté serveur
   // La date de clôture est vérifiée ici — jamais seulement côté client
