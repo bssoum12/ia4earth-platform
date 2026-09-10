@@ -37,7 +37,6 @@ export default function Navbar() {
             <Link
               key={l.href}
               href={l.href}
-              {...(l.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
               className="px-3 py-1.5 rounded text-sm text-leaf-100/70 hover:text-white hover:bg-white/8 transition-colors duration-150"
             >
               {l.label}
