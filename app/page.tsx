@@ -88,27 +88,56 @@ export default function Home() {
 
               {/* Droite — carte éligibilité */}
               <div className="animate-fade-up [animation-delay:120ms]" id="eligibilite">
-                <div className="surface-card rounded-xl p-6 sm:p-7">
-                  <div className="text-xs font-bold text-forest-700 uppercase tracking-wider mb-4">
-                    Vous êtes éligible si…
+                <div className="rounded-xl overflow-hidden shadow-card border border-leaf-200">
+                  {/* En-tête coloré */}
+                  <div className="bg-forest-700 px-6 py-4 flex items-center gap-3">
+                    <div className="w-8 h-8 rounded-full bg-white/15 flex items-center justify-center shrink-0">
+                      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden>
+                        <path d="M8 1.5a6.5 6.5 0 100 13 6.5 6.5 0 000-13zM4.5 8l2.5 2.5 4.5-4.5" stroke="white" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
+                      </svg>
+                    </div>
+                    <div>
+                      <div className="text-white font-display font-bold text-base leading-tight">
+                        Vous êtes éligible si…
+                      </div>
+                      <div className="text-leaf-300/70 text-xs mt-0.5">4 critères de recevabilité</div>
+                    </div>
                   </div>
-                  <ul className="space-y-3.5 mb-6">
-                    {[
-                      "Votre startup est constituée, ou en cours de constitution avancée (Art. 4)",
-                      "Vous avez une traction démontrable : premiers clients, CA, preuve de marché",
-                      "Votre projet touche à l'économie verte, la finance responsable ou le DD",
-                      "L'IA n'est pas requise — elle est un plus, pas une condition (Art. 3.2)",
-                    ].map((item) => (
-                      <li key={item} className="flex gap-3 text-sm text-forest-700">
-                        <svg className="flex-none mt-0.5" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden>
-                          <circle cx="8" cy="8" r="7" fill="#EBF7D4" stroke="#8CC63F" strokeWidth="1.2"/>
-                          <path d="M5 8l2 2 4-4" stroke="#2D6030" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
-                        </svg>
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
 
+                  {/* Corps */}
+                  <div className="bg-white px-6 py-5">
+                    <ul className="space-y-4">
+                      {[
+                        { text: "Votre startup est constituée, ou en cours de constitution avancée", ref: "Art. 4" },
+                        { text: "Vous avez une traction démontrable : premiers clients, CA, preuve de marché", ref: null },
+                        { text: "Votre projet touche à l'économie verte, la finance responsable ou le DD", ref: "Art. 3.2" },
+                        { text: "L'IA n'est pas requise — elle est un plus, pas une condition", ref: "Art. 3.2" },
+                      ].map(({ text, ref }, i) => (
+                        <li key={i} className="flex gap-3 items-start">
+                          <div className="w-6 h-6 rounded-full bg-leaf-100 border border-leaf-300 flex items-center justify-center shrink-0 mt-0.5">
+                            <svg width="11" height="11" viewBox="0 0 12 12" fill="none" aria-hidden>
+                              <path d="M2.5 6l2.5 2.5 4.5-5" stroke="#2D6030" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+                            </svg>
+                          </div>
+                          <div>
+                            <span className="text-sm text-forest-800 leading-snug">{text}</span>
+                            {ref && (
+                              <span className="ml-1.5 text-2xs font-mono text-forest-700/40 font-semibold">({ref})</span>
+                            )}
+                          </div>
+                        </li>
+                      ))}
+                    </ul>
+
+                    <div className="mt-5 pt-4 border-t border-leaf-100">
+                      <Link href="/candidater" className="btn-primary w-full justify-center text-sm">
+                        Déposer ma candidature →
+                      </Link>
+                      <p className="text-2xs text-forest-700/40 text-center mt-2">
+                        Clôture le 15 octobre 2026 à 23h59
+                      </p>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
