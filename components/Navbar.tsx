@@ -8,6 +8,7 @@ const NAV_LINKS = [
   { href: "/#eligibilite", label: "Éligibilité" },
   { href: "/#prix", label: "Prix" },
   { href: "/reglement", label: "Règlement" },
+  { href: "/contact", label: "Contact" },
 ];
 
 export default function Navbar() {

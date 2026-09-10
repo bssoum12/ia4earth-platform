@@ -421,12 +421,12 @@ export default function ReglementPage() {
             </p>
             <p>
               Pour toute question relative au présent règlement, contactez le comité
-              d'organisation à{" "}
+              d'organisation via le{" "}
               <a
-                href="mailto:contact@salondedeveloppementdurable.com"
+                href="/contact"
                 className="text-forest-700 underline hover:text-forest-900"
               >
-                contact@salondedeveloppementdurable.com
+                formulaire de contact
               </a>
               .
             </p>

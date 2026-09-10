@@ -309,9 +309,9 @@ export default function Home() {
               <FaqAccordion />
               <p className="mt-8 text-sm text-forest-700/50">
                 Une question non couverte ici ?{" "}
-                <a href="mailto:contact@salondedeveloppementdurable.com" className="text-forest-700 underline underline-offset-2 hover:text-earth-700 transition-colors">
+                <Link href="/contact" className="text-forest-700 underline underline-offset-2 hover:text-earth-700 transition-colors">
                   Écrivez-nous
-                </a>{" "}
+                </Link>{" "}
                 — nous répondons sous 48h.
               </p>
             </div>
@@ -351,7 +351,7 @@ export default function Home() {
           <div className="flex gap-5">
             <Link href="/reglement" className="hover:text-leaf-300 transition-colors">Règlement</Link>
             <Link href="/#faq" className="hover:text-leaf-300 transition-colors">FAQ</Link>
-            <a href="mailto:contact@salondedeveloppementdurable.com" className="hover:text-leaf-300 transition-colors">Contact</a>
+            <Link href="/contact" className="hover:text-leaf-300 transition-colors">Contact</Link>
           </div>
         </div>
       </footer>

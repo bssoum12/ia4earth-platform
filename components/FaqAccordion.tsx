@@ -29,7 +29,7 @@ const FAQ = [
   },
   {
     q: "Les startups hors Tunisie peuvent-elles participer ?",
-    a: "Le concours cible prioritairement les startups tunisiennes et africaines. Si votre projet a un lien direct avec la Tunisie ou l'Afrique (équipe, marché, impact), votre dossier sera examiné. Contactez-nous à contact@salondedeveloppementdurable.com pour toute question spécifique.",
+    a: "Le concours cible prioritairement les startups tunisiennes et africaines. Si votre projet a un lien direct avec la Tunisie ou l'Afrique (équipe, marché, impact), votre dossier sera examiné. Posez-nous la question via le formulaire de contact.",
   },
   {
     q: "Que se passe-t-il après la clôture du 15 octobre ?",
