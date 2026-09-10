@@ -423,10 +423,10 @@ export default function ReglementPage() {
               Pour toute question relative au présent règlement, contactez le comité
               d'organisation à{" "}
               <a
-                href="mailto:contact@ia4earth.tn"
+                href="mailto:contact@salondedeveloppementdurable.com"
                 className="text-forest-700 underline hover:text-forest-900"
               >
-                contact@ia4earth.tn
+                contact@salondedeveloppementdurable.com
               </a>
               .
             </p>

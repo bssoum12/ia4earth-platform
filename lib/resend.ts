@@ -1,7 +1,7 @@
 import { Resend } from "resend";
 
 export const FROM_EMAIL = process.env.FROM_EMAIL ?? "IA4EARTH Challenge <noreply@ia4earth.tn>";
-export const REPLY_TO   = process.env.REPLY_TO_EMAIL ?? "contact@ia4earth.tn";
+export const REPLY_TO   = process.env.REPLY_TO_EMAIL ?? "contact@salondedeveloppementdurable.com";
 
 // Client instancié à la demande pour éviter l'échec au build sans API key
 function getResendClient() {
@@ -72,7 +72,7 @@ export async function envoyerAccuseReception({
       </table>
       <p style="color:#163718;font-size:14px;margin:24px 0 0;">
         Pour toute question, répondez directement à cet e-mail ou écrivez à
-        <a href="mailto:contact@ia4earth.tn" style="color:#2D6030;font-weight:600;">contact@ia4earth.tn</a>.
+        <a href="mailto:contact@salondedeveloppementdurable.com" style="color:#2D6030;font-weight:600;">contact@salondedeveloppementdurable.com</a>.
       </p>
     </div>
     <div style="background:#EBF7D4;padding:16px 32px;font-size:11px;color:#3D7A3F;border-top:1px solid #D4EFA5;">
