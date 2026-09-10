@@ -23,7 +23,12 @@ const dmMono = DM_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL ?? "https://candidatures.ia4earth.tn"),
+  metadataBase: new URL(
+    (() => {
+      const u = process.env.NEXT_PUBLIC_APP_URL ?? "";
+      return u.startsWith("http") ? u : "https://candidatures.ia4earth.tn";
+    })()
+  ),
   title: "IA4EARTH Startup Challenge — Candidatures",
   description:
     "Candidatez au IA4EARTH Startup Challenge, le concours de startups de la 3ème édition du Salon de l'Économie Verte, Finance Responsable et Développement Durable — 5-6 novembre 2026, UTICA Tunis.",
