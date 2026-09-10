@@ -59,6 +59,11 @@
   /* Animations */
   --animate-fade-up:    fade-up 0.5s ease both;
   --animate-pulse-slow: pulse-slow 3s ease-in-out infinite;
+  --animate-float:      float 6s ease-in-out infinite;
+  --animate-float-slow: float 9s ease-in-out infinite;
+  --animate-glow-pulse: glow-pulse 2.5s ease-in-out infinite;
+  --animate-spin-slow:  spin-slow 20s linear infinite;
+  --animate-scan:       scan 3s linear infinite;
 
   @keyframes fade-up {
     from { opacity: 0; transform: translateY(16px); }
@@ -67,6 +72,32 @@
   @keyframes pulse-slow {
     0%, 100% { opacity: 1; }
     50%       { opacity: 0.6; }
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0) scale(1); }
+    50%       { transform: translateY(-24px) scale(1.04); }
+  }
+  @keyframes glow-pulse {
+    0%, 100% { box-shadow: 0 0 20px rgba(140,198,63,0.3), 0 0 60px rgba(140,198,63,0.1); }
+    50%       { box-shadow: 0 0 40px rgba(140,198,63,0.6), 0 0 100px rgba(140,198,63,0.25); }
+  }
+  @keyframes spin-slow {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(360deg); }
+  }
+  @keyframes scan {
+    0%   { transform: translateY(-100%); opacity: 0; }
+    10%  { opacity: 0.4; }
+    90%  { opacity: 0.4; }
+    100% { transform: translateY(400%); opacity: 0; }
+  }
+  @keyframes gradient-shift {
+    0%, 100% { background-position: 0% 50%; }
+    50%       { background-position: 100% 50%; }
+  }
+  @keyframes border-glow {
+    0%, 100% { opacity: 0.5; }
+    50%       { opacity: 1; }
   }
 }
 
@@ -193,6 +224,173 @@
     background: var(--color-card);
     border: 1px solid var(--color-card-border);
     box-shadow: var(--shadow-card);
+  }
+
+  /* ── Futuristic / AI design system ── */
+
+  /* Dark AI section background */
+  .ai-bg {
+    background: #080f0a;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Glassmorphism card */
+  .glass-card {
+    background: rgba(22, 55, 24, 0.45);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(140, 198, 63, 0.18);
+    box-shadow:
+      0 4px 32px rgba(0,0,0,0.4),
+      inset 0 1px 0 rgba(140,198,63,0.1);
+  }
+
+  /* Neon glow on hover */
+  .glass-card:hover {
+    border-color: rgba(140, 198, 63, 0.4);
+    box-shadow:
+      0 8px 48px rgba(0,0,0,0.5),
+      0 0 20px rgba(140,198,63,0.15),
+      inset 0 1px 0 rgba(140,198,63,0.2);
+  }
+
+  /* 3D tilt card */
+  .card-3d {
+    transition: transform 0.35s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.35s ease;
+    transform-style: preserve-3d;
+  }
+  .card-3d:hover {
+    transform: perspective(700px) rotateX(-4deg) rotateY(4deg) translateZ(8px) scale(1.015);
+  }
+
+  /* Gradient text */
+  .text-gradient {
+    background: linear-gradient(135deg, #8CC63F 0%, #2ABFA0 50%, #8CC63F 100%);
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: gradient-shift 4s ease infinite;
+  }
+  .text-gradient-gold {
+    background: linear-gradient(135deg, #e8d48b 0%, #f5f0c0 50%, #c9a94a 100%);
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: gradient-shift 5s ease infinite;
+  }
+
+  /* Neon border */
+  .neon-border {
+    border: 1px solid rgba(140,198,63,0.4);
+    box-shadow: 0 0 8px rgba(140,198,63,0.2), inset 0 0 8px rgba(140,198,63,0.05);
+    animation: border-glow 2.5s ease-in-out infinite;
+  }
+
+  /* Floating orb */
+  .orb {
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+    filter: blur(60px);
+  }
+
+  /* Dot grid background */
+  .dot-grid {
+    background-image: radial-gradient(rgba(140,198,63,0.15) 1px, transparent 1px);
+    background-size: 28px 28px;
+  }
+
+  /* Scan line effect */
+  .scan-line::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, rgba(140,198,63,0.5), transparent);
+    animation: scan 3s linear infinite;
+    pointer-events: none;
+  }
+
+  /* Neon glow animation on element */
+  .neon-glow {
+    animation: glow-pulse 2.5s ease-in-out infinite;
+  }
+
+  /* Tag / badge futuriste */
+  .ai-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 12px;
+    border-radius: 9999px;
+    border: 1px solid rgba(140,198,63,0.35);
+    background: rgba(140,198,63,0.08);
+    color: #8CC63F;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  /* CTA primaire futuriste */
+  .btn-ai {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 13px 28px;
+    border-radius: 6px;
+    background: linear-gradient(135deg, #8CC63F, #56901A);
+    color: #0a1a0b;
+    font-weight: 700;
+    font-size: 0.9rem;
+    text-decoration: none;
+    cursor: pointer;
+    border: none;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 20px rgba(140,198,63,0.35), 0 1px 0 rgba(255,255,255,0.15) inset;
+  }
+  .btn-ai::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(255,255,255,0.15), transparent);
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+  .btn-ai:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 8px 32px rgba(140,198,63,0.5), 0 1px 0 rgba(255,255,255,0.15) inset;
+  }
+  .btn-ai:hover::before { opacity: 1; }
+  .btn-ai:active { transform: scale(0.98); }
+
+  /* Ghost futuriste */
+  .btn-ai-ghost {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 13px 28px;
+    border-radius: 6px;
+    background: transparent;
+    color: rgba(140,198,63,0.9);
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-decoration: none;
+    cursor: pointer;
+    border: 1px solid rgba(140,198,63,0.4);
+    transition: all 0.2s ease;
+    backdrop-filter: blur(8px);
+  }
+  .btn-ai-ghost:hover {
+    background: rgba(140,198,63,0.08);
+    border-color: rgba(140,198,63,0.7);
+    box-shadow: 0 0 16px rgba(140,198,63,0.15);
   }
 
   /* Form inputs */

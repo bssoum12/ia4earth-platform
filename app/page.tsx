@@ -12,26 +12,10 @@ const CALENDRIER = [
 ];
 
 const PRIX = [
-  {
-    ico: "🥇",
-    titre: "1er Prix",
-    desc: "Dotation principale, visibilité maximum sur les supports du Salon et dans les médias partenaires.",
-  },
-  {
-    ico: "🌿",
-    titre: "Prix Impact Environnemental",
-    desc: "Récompense la startup dont l'impact environnemental et social mesuré est le plus significatif.",
-  },
-  {
-    ico: "💡",
-    titre: "Prix Coup de Cœur du Jury",
-    desc: "Attribué sur critères qualitatifs par le jury pour reconnaître une innovation particulièrement marquante.",
-  },
-  {
-    ico: "👥",
-    titre: "Prix du Public",
-    desc: "Plébiscité par les visiteurs du Salon lors de la cérémonie de remise des prix.",
-  },
+  { ico: "🥇", titre: "1er Prix", desc: "Dotation principale, visibilité maximum sur les supports du Salon et dans les médias partenaires." },
+  { ico: "🌿", titre: "Prix Impact Environnemental", desc: "Récompense la startup dont l'impact environnemental et social mesuré est le plus significatif." },
+  { ico: "💡", titre: "Prix Coup de Cœur du Jury", desc: "Attribué sur critères qualitatifs par le jury pour reconnaître une innovation particulièrement marquante." },
+  { ico: "👥", titre: "Prix du Public", desc: "Plébiscité par les visiteurs du Salon lors de la cérémonie de remise des prix." },
 ];
 
 export default function Home() {
@@ -39,114 +23,117 @@ export default function Home() {
     <>
       <Navbar />
       <main>
+
         {/* ===== HERO ===== */}
-        <section className="relative overflow-hidden bg-leaf-50 circuit-bg">
-          {/* Gradient overlay sur le motif circuit */}
-          <div className="absolute inset-0 bg-gradient-to-br from-leaf-50 via-leaf-50/95 to-leaf-100/80 pointer-events-none" />
+        <section className="relative overflow-hidden" style={{ background: "#060d07", minHeight: "92vh" }}>
+          {/* Dot grid */}
+          <div className="absolute inset-0 dot-grid opacity-60" />
 
-          <div className="relative max-w-6xl mx-auto px-4 sm:px-6 py-16 sm:py-24">
-            <div className="grid lg:grid-cols-[1.2fr_0.9fr] gap-12 lg:gap-16 items-start">
-              {/* Gauche */}
-              <div className="animate-fade-up">
-                <div className="inline-flex items-center gap-2 bg-forest-700/8 border border-forest-700/15 rounded-full px-3 py-1 text-xs font-semibold text-forest-700 mb-5">
-                  <span className="w-1.5 h-1.5 rounded-full bg-leaf-400 animate-pulse-slow" />
-                  3ème édition · Salon ÉV FR DD · Candidatures ouvertes
-                </div>
+          {/* Orbes flottantes */}
+          <div className="orb animate-float" style={{ width: 500, height: 500, top: -100, left: -120, background: "radial-gradient(circle, rgba(140,198,63,0.18) 0%, transparent 70%)" }} />
+          <div className="orb animate-float-slow" style={{ width: 400, height: 400, top: 60, right: -80, background: "radial-gradient(circle, rgba(42,191,160,0.14) 0%, transparent 70%)", animationDelay: "2s" }} />
+          <div className="orb" style={{ width: 300, height: 300, bottom: -60, left: "40%", background: "radial-gradient(circle, rgba(140,198,63,0.1) 0%, transparent 70%)", animation: "float 11s ease-in-out infinite", animationDelay: "1s" }} />
 
-                <h1 className="font-display text-4xl sm:text-5xl lg:text-[3.4rem] font-bold text-forest-900 leading-[1.06] mb-5">
-                  Votre startup a de{" "}
-                  <span className="relative inline-block">
-                    <span className="relative z-10 text-forest-700">l'impact.</span>
-                    <svg className="absolute -bottom-1 left-0 w-full h-2" viewBox="0 0 200 8" preserveAspectRatio="none" aria-hidden>
-                      <path d="M0 6 Q50 1 100 5 Q150 9 200 4" stroke="#8CC63F" strokeWidth="2.5" fill="none" strokeLinecap="round"/>
-                    </svg>
-                  </span>
-                  <br />
-                  <em className="not-italic text-earth-700">Faites-le savoir.</em>
-                </h1>
+          {/* Ligne scanline */}
+          <div className="scan-line absolute inset-0 pointer-events-none overflow-hidden" />
 
-                <p className="text-base sm:text-lg text-forest-700/80 max-w-[52ch] mb-8 leading-relaxed">
-                  Le IA4EARTH Startup Challenge récompense les startups tunisiennes qui font
-                  avancer l&apos;économie verte, la finance responsable et le développement durable
-                  — <strong className="text-forest-800">avec ou sans intelligence artificielle.</strong>
-                </p>
+          <div className="relative max-w-6xl mx-auto px-4 sm:px-6 py-20 sm:py-28 flex flex-col lg:flex-row items-start gap-14 lg:gap-20">
 
-                <div className="flex flex-wrap gap-3 mb-10">
-                  <Link href="/candidater" className="btn-primary text-sm">
-                    Déposer ma candidature
-                    <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden>
-                      <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
-                    </svg>
-                  </Link>
-                  <Link href="/reglement" className="btn-ghost text-sm">
-                    Lire le règlement
-                  </Link>
-                </div>
-
-                {/* Compte à rebours */}
-                <CountdownTimer />
+            {/* Gauche */}
+            <div className="flex-1 animate-fade-up">
+              <div className="ai-tag mb-6">
+                <span className="w-1.5 h-1.5 rounded-full bg-leaf-400 animate-pulse-slow" />
+                3ème édition · Candidatures ouvertes
               </div>
 
-              {/* Droite — carte éligibilité */}
-              <div className="animate-fade-up [animation-delay:120ms]" id="eligibilite">
-                <div className="rounded-xl overflow-hidden shadow-card border border-leaf-200">
-                  {/* En-tête coloré */}
-                  <div className="bg-forest-700 px-6 py-4 flex items-center gap-3">
-                    <div className="w-8 h-8 rounded-full bg-white/15 flex items-center justify-center shrink-0">
-                      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden>
-                        <path d="M8 1.5a6.5 6.5 0 100 13 6.5 6.5 0 000-13zM4.5 8l2.5 2.5 4.5-4.5" stroke="white" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
-                      </svg>
-                    </div>
-                    <div>
-                      <div className="text-white font-display font-bold text-base leading-tight">
-                        Vous êtes éligible si…
-                      </div>
-                      <div className="text-leaf-300/70 text-xs mt-0.5">4 critères de recevabilité</div>
-                    </div>
+              <h1 className="font-display font-black leading-[1.02] mb-6" style={{ fontSize: "clamp(2.6rem,5vw,4.2rem)" }}>
+                <span style={{ color: "rgba(255,255,255,0.92)" }}>Votre startup a de</span>
+                <br />
+                <span className="text-gradient">l'impact.</span>
+                <br />
+                <span style={{ color: "rgba(255,255,255,0.55)", fontStyle: "italic" }}>Faites-le savoir.</span>
+              </h1>
+
+              <p className="text-base sm:text-lg mb-10 max-w-[50ch] leading-relaxed" style={{ color: "rgba(200,230,180,0.6)" }}>
+                Le IA4EARTH Startup Challenge récompense les startups tunisiennes qui font
+                avancer l'économie verte, la finance responsable et le développement durable —{" "}
+                <strong style={{ color: "rgba(200,230,180,0.9)" }}>avec ou sans intelligence artificielle.</strong>
+              </p>
+
+              <div className="flex flex-wrap gap-3 mb-14">
+                <Link href="/candidater" className="btn-ai">
+                  Déposer ma candidature
+                  <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden>
+                    <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                </Link>
+                <Link href="/reglement" className="btn-ai-ghost">
+                  Lire le règlement
+                </Link>
+              </div>
+
+              {/* Compte à rebours */}
+              <CountdownTimer />
+            </div>
+
+            {/* Droite — carte éligibilité glass */}
+            <div className="w-full lg:w-[380px] shrink-0 animate-fade-up [animation-delay:120ms]" id="eligibilite">
+              <div className="glass-card card-3d rounded-2xl overflow-hidden">
+                <div className="px-6 py-4 flex items-center gap-3" style={{ borderBottom: "1px solid rgba(140,198,63,0.15)" }}>
+                  <div className="w-9 h-9 rounded-full flex items-center justify-center shrink-0 neon-glow" style={{ background: "rgba(140,198,63,0.15)", border: "1px solid rgba(140,198,63,0.3)" }}>
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden>
+                      <path d="M8 1.5a6.5 6.5 0 100 13 6.5 6.5 0 000-13zM4.5 8l2.5 2.5 4.5-4.5" stroke="#8CC63F" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
                   </div>
-
-                  {/* Corps */}
-                  <div className="bg-white px-6 py-5">
-                    <ul className="space-y-4">
-                      {[
-                        { text: "Votre startup est constituée, ou en cours de constitution avancée", ref: "Art. 4" },
-                        { text: "Vous avez une traction démontrable : premiers clients, CA, preuve de marché", ref: null },
-                        { text: "Votre projet touche à l'économie verte, la finance responsable ou le DD", ref: "Art. 3.2" },
-                        { text: "L'IA n'est pas requise — elle est un plus, pas une condition", ref: "Art. 3.2" },
-                      ].map(({ text, ref }, i) => (
-                        <li key={i} className="flex gap-3 items-start">
-                          <div className="w-6 h-6 rounded-full bg-leaf-100 border border-leaf-300 flex items-center justify-center shrink-0 mt-0.5">
-                            <svg width="11" height="11" viewBox="0 0 12 12" fill="none" aria-hidden>
-                              <path d="M2.5 6l2.5 2.5 4.5-5" stroke="#2D6030" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
-                            </svg>
-                          </div>
-                          <div>
-                            <span className="text-sm text-forest-800 leading-snug">{text}</span>
-                            {ref && (
-                              <span className="ml-1.5 text-2xs font-mono text-forest-700/40 font-semibold">({ref})</span>
-                            )}
-                          </div>
-                        </li>
-                      ))}
-                    </ul>
-
-                    <div className="mt-5 pt-4 border-t border-leaf-100">
-                      <Link href="/candidater" className="btn-primary w-full justify-center text-sm">
-                        Déposer ma candidature →
-                      </Link>
-                      <p className="text-2xs text-forest-700/40 text-center mt-2">
-                        Clôture le 15 octobre 2026 à 23h59
-                      </p>
+                  <div>
+                    <div className="font-display font-bold text-base leading-tight" style={{ color: "rgba(255,255,255,0.92)" }}>
+                      Vous êtes éligible si…
                     </div>
+                    <div className="text-xs mt-0.5" style={{ color: "rgba(140,198,63,0.6)" }}>4 critères de recevabilité</div>
+                  </div>
+                </div>
+
+                <div className="px-6 py-5">
+                  <ul className="space-y-4">
+                    {[
+                      { text: "Votre startup est constituée, ou en cours de constitution avancée", ref: "Art. 4" },
+                      { text: "Vous avez une traction démontrable : premiers clients, CA, preuve de marché", ref: null },
+                      { text: "Votre projet touche à l'économie verte, la finance responsable ou le DD", ref: "Art. 3.2" },
+                      { text: "L'IA n'est pas requise — elle est un plus, pas une condition", ref: "Art. 3.2" },
+                    ].map(({ text, ref }, i) => (
+                      <li key={i} className="flex gap-3 items-start">
+                        <div className="w-6 h-6 rounded-full flex items-center justify-center shrink-0 mt-0.5" style={{ background: "rgba(140,198,63,0.15)", border: "1px solid rgba(140,198,63,0.35)" }}>
+                          <svg width="11" height="11" viewBox="0 0 12 12" fill="none" aria-hidden>
+                            <path d="M2.5 6l2.5 2.5 4.5-5" stroke="#8CC63F" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+                          </svg>
+                        </div>
+                        <div>
+                          <span className="text-sm leading-snug" style={{ color: "rgba(220,240,200,0.85)" }}>{text}</span>
+                          {ref && <span className="ml-1.5 text-2xs font-mono font-semibold" style={{ color: "rgba(140,198,63,0.45)" }}>({ref})</span>}
+                        </div>
+                      </li>
+                    ))}
+                  </ul>
+
+                  <div className="mt-5 pt-4" style={{ borderTop: "1px solid rgba(140,198,63,0.12)" }}>
+                    <Link href="/candidater" className="btn-ai w-full justify-center">
+                      Déposer ma candidature →
+                    </Link>
+                    <p className="text-2xs text-center mt-2" style={{ color: "rgba(140,198,63,0.35)" }}>
+                      Clôture le 15 octobre 2026 à 23h59
+                    </p>
                   </div>
                 </div>
               </div>
             </div>
           </div>
+
+          {/* Bas du hero — ligne de dégradé */}
+          <div className="absolute bottom-0 left-0 right-0 h-px" style={{ background: "linear-gradient(90deg, transparent, rgba(140,198,63,0.3), transparent)" }} />
         </section>
 
         {/* ===== FRISE CHRONOLOGIQUE ===== */}
-        <div className="bg-forest-900 text-white py-10 overflow-x-auto">
+        <div className="py-10 overflow-x-auto" style={{ background: "#0a1309", borderTop: "1px solid rgba(140,198,63,0.1)", borderBottom: "1px solid rgba(140,198,63,0.1)" }}>
           <div className="max-w-6xl mx-auto px-4 sm:px-6 min-w-[600px]">
             {(() => {
               const steps = [
@@ -157,45 +144,32 @@ export default function Home() {
               ];
               return (
                 <div className="relative flex items-start justify-between gap-0">
-                  {/* Ligne de connexion */}
-                  <div className="absolute top-[22px] left-[5%] right-[5%] h-px bg-forest-700" aria-hidden />
-                  {/* Ligne de progression (12 sept → 15 oct passé) */}
-                  <div className="absolute top-[22px] left-[5%] w-[30%] h-px bg-leaf-400" aria-hidden />
+                  <div className="absolute top-[22px] left-[5%] right-[5%] h-px" style={{ background: "rgba(140,198,63,0.15)" }} aria-hidden />
+                  <div className="absolute top-[22px] left-[5%] w-[30%] h-px" style={{ background: "linear-gradient(90deg, #8CC63F, rgba(42,191,160,0.6))" }} aria-hidden />
 
                   {steps.map((s, i) => (
                     <div key={i} className="relative flex flex-col items-center text-center flex-1 px-2">
-                      {/* Dot */}
-                      <div
-                        className={`
-                          relative z-10 w-11 h-11 rounded-full flex items-center justify-center mb-3 border-2 shrink-0
-                          ${s.done
-                            ? "bg-leaf-400 border-leaf-400"
-                            : s.highlight
-                            ? "bg-earth-700 border-earth-600 shadow-lg shadow-earth-700/40"
-                            : "bg-forest-800 border-forest-600"}
-                        `}
+                      <div className={`relative z-10 w-11 h-11 rounded-full flex items-center justify-center mb-3 border-2 shrink-0 ${s.done ? "neon-glow" : ""}`}
+                        style={{
+                          background: s.done ? "rgba(140,198,63,0.2)" : s.highlight ? "rgba(139,46,46,0.3)" : "rgba(22,55,24,0.6)",
+                          border: `2px solid ${s.done ? "#8CC63F" : s.highlight ? "#8B2E2E" : "rgba(140,198,63,0.25)"}`,
+                        }}
                       >
                         {s.done ? (
                           <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden>
-                            <path d="M3.5 8l3 3 6-6" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                            <path d="M3.5 8l3 3 6-6" stroke="#8CC63F" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                           </svg>
                         ) : (
-                          <span className={`text-xs font-bold font-mono ${s.highlight ? "text-white" : "text-leaf-400"}`}>
-                            {i + 1}
-                          </span>
+                          <span className="text-xs font-bold font-mono" style={{ color: s.highlight ? "#C46060" : "#8CC63F" }}>{i + 1}</span>
                         )}
                       </div>
-
-                      {/* Date */}
-                      <span className={`font-display font-bold text-base sm:text-lg block leading-none mb-1 ${s.done ? "text-leaf-400" : s.highlight ? "text-earth-400" : "text-white"}`}>
+                      <span className="font-display font-bold text-base sm:text-lg block leading-none mb-1" style={{ color: s.done ? "#8CC63F" : s.highlight ? "#C46060" : "rgba(255,255,255,0.85)" }}>
                         {s.date}
                       </span>
-                      {/* Label */}
-                      <span className={`text-xs font-bold uppercase tracking-wider block mb-0.5 ${s.highlight ? "text-earth-400" : "text-leaf-100/80"}`}>
+                      <span className="text-xs font-bold uppercase tracking-wider block mb-0.5" style={{ color: s.highlight ? "#C46060" : "rgba(140,198,63,0.7)" }}>
                         {s.label}
                       </span>
-                      {/* Sous-titre */}
-                      <span className="text-2xs text-leaf-100/40 leading-tight hidden sm:block">{s.sub}</span>
+                      <span className="text-2xs leading-tight hidden sm:block" style={{ color: "rgba(200,230,180,0.35)" }}>{s.sub}</span>
                     </div>
                   ))}
                 </div>
@@ -205,40 +179,40 @@ export default function Home() {
         </div>
 
         {/* ===== PRIX ===== */}
-        <section id="prix" className="py-16 sm:py-20 bg-white">
+        <section id="prix" className="py-20" style={{ background: "#080d08" }}>
           <div className="max-w-6xl mx-auto px-4 sm:px-6">
-            <div className="max-w-xl mb-10">
-              <h2 className="font-display text-3xl font-bold text-forest-900 mb-3">Ce que vous gagnez</h2>
-              <p className="text-forest-700/70">
+            <div className="max-w-xl mb-12">
+              <div className="ai-tag mb-4">Récompenses</div>
+              <h2 className="font-display text-3xl font-bold mb-3" style={{ color: "rgba(255,255,255,0.92)" }}>
+                Ce que vous <span className="text-gradient">gagnez</span>
+              </h2>
+              <p style={{ color: "rgba(200,230,180,0.5)" }}>
                 Au-delà de la dotation, un accompagnement pensé pour durer après la cérémonie.
               </p>
             </div>
 
             <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
               {PRIX.map((p) => (
-                <div key={p.titre} className="surface-card rounded-lg p-5 hover:shadow-card-hover transition-shadow duration-200">
-                  <div className="text-2xl mb-3">{p.ico}</div>
-                  <h3 className="font-display font-bold text-base text-forest-900 mb-2">{p.titre}</h3>
-                  <p className="text-sm text-forest-700/70 leading-relaxed">{p.desc}</p>
+                <div key={p.titre} className="glass-card card-3d rounded-xl p-5 cursor-default">
+                  <div className="text-3xl mb-4">{p.ico}</div>
+                  <h3 className="font-display font-bold text-base mb-2" style={{ color: "rgba(255,255,255,0.9)" }}>{p.titre}</h3>
+                  <p className="text-sm leading-relaxed" style={{ color: "rgba(200,230,180,0.55)" }}>{p.desc}</p>
                 </div>
               ))}
             </div>
 
-            {/* Accompagnement */}
-            <div className="mt-6 bg-leaf-100 border border-leaf-200 rounded-xl p-6 sm:p-8 grid sm:grid-cols-2 gap-6">
+            <div className="mt-6 glass-card rounded-xl p-6 sm:p-8 grid sm:grid-cols-2 gap-6">
               <div>
-                <div className="inline-flex items-center gap-2 bg-forest-700 text-white text-xs font-bold px-2.5 py-1 rounded-full mb-3">
-                  Accompagnement post-concours
-                </div>
-                <h3 className="font-display font-bold text-xl text-forest-900 mb-2">Un mentorat qui dure</h3>
-                <p className="text-sm text-forest-700/80">
+                <div className="ai-tag mb-3">Accompagnement post-concours</div>
+                <h3 className="font-display font-bold text-xl mb-2" style={{ color: "rgba(255,255,255,0.9)" }}>Un mentorat qui dure</h3>
+                <p className="text-sm" style={{ color: "rgba(200,230,180,0.55)" }}>
                   3 à 6 mois d'accompagnement par des mentors issus du réseau du Comité de pilotage
                   et de ses partenaires institutionnels.
                 </p>
               </div>
               <div>
-                <h3 className="font-display font-bold text-xl text-forest-900 mb-2">Un accès direct aux investisseurs</h3>
-                <p className="text-sm text-forest-700/80">
+                <h3 className="font-display font-bold text-xl mb-2" style={{ color: "rgba(255,255,255,0.9)" }}>Un accès direct aux investisseurs</h3>
+                <p className="text-sm" style={{ color: "rgba(200,230,180,0.55)" }}>
                   Mise en relation structurée avec les investisseurs et partenaires présents au Salon
                   — pas laissée au hasard des couloirs.
                 </p>
@@ -248,45 +222,48 @@ export default function Home() {
         </section>
 
         {/* ===== CALENDRIER ===== */}
-        <section id="calendrier" className="py-16 sm:py-20 bg-leaf-50">
+        <section id="calendrier" className="py-20" style={{ background: "#060d07", borderTop: "1px solid rgba(140,198,63,0.08)" }}>
           <div className="max-w-6xl mx-auto px-4 sm:px-6">
-            <div className="max-w-xl mb-10">
-              <h2 className="font-display text-3xl font-bold text-forest-900 mb-3">Calendrier du concours</h2>
-              <p className="text-forest-700/70">
+            <div className="max-w-xl mb-12">
+              <div className="ai-tag mb-4">Timeline</div>
+              <h2 className="font-display text-3xl font-bold mb-3" style={{ color: "rgba(255,255,255,0.92)" }}>
+                Calendrier du <span className="text-gradient">concours</span>
+              </h2>
+              <p style={{ color: "rgba(200,230,180,0.5)" }}>
                 Le calendrier s'applique sans exception — toute modification est communiquée par voie électronique.
               </p>
             </div>
 
-            <div className="relative">
-              {/* Ligne verticale */}
-              <div className="absolute left-[15px] top-4 bottom-4 w-px bg-leaf-200" aria-hidden />
+            <div className="relative max-w-2xl">
+              <div className="absolute left-[14px] top-4 bottom-4 w-px" style={{ background: "linear-gradient(180deg, #8CC63F, rgba(42,191,160,0.3), transparent)" }} aria-hidden />
 
               <ol className="space-y-0">
                 {CALENDRIER.map((item, i) => (
                   <li key={i} className="relative pl-10 pb-8 last:pb-0">
-                    {/* Dot */}
-                    <div
-                      className={`absolute left-0 top-1 w-[30px] h-[30px] rounded-full flex items-center justify-center border-2 z-10
-                        ${item.done ? "bg-earth-700 border-earth-700" : item.highlight ? "bg-forest-700 border-forest-700" : "bg-white border-leaf-300"}`}
+                    <div className={`absolute left-0 top-1 w-[28px] h-[28px] rounded-full flex items-center justify-center border z-10 ${item.done ? "neon-glow" : ""}`}
+                      style={{
+                        background: item.done ? "rgba(140,198,63,0.2)" : item.highlight ? "rgba(139,46,46,0.25)" : "rgba(22,55,24,0.8)",
+                        border: `1px solid ${item.done ? "rgba(140,198,63,0.7)" : item.highlight ? "rgba(139,46,46,0.6)" : "rgba(140,198,63,0.2)"}`,
+                      }}
                     >
                       {item.done ? (
                         <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden>
-                          <path d="M2.5 6l2.5 2.5 4.5-5" stroke="white" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+                          <path d="M2.5 6l2.5 2.5 4.5-5" stroke="#8CC63F" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
                         </svg>
                       ) : (
-                        <div className={`w-2.5 h-2.5 rounded-full ${item.highlight ? "bg-white" : "bg-leaf-400"}`} />
+                        <div className="w-2 h-2 rounded-full" style={{ background: item.highlight ? "#C46060" : "rgba(140,198,63,0.5)" }} />
                       )}
                     </div>
 
                     <div className="flex flex-col sm:flex-row sm:items-baseline sm:gap-4">
-                      <time className={`text-xs font-bold uppercase tracking-wider flex-none w-28 ${item.highlight ? "text-earth-700" : "text-forest-700"}`}>
+                      <time className="text-xs font-bold uppercase tracking-wider flex-none w-28" style={{ color: item.highlight ? "#C46060" : "#8CC63F" }}>
                         {item.date}
                       </time>
                       <div>
-                        <span className={`font-semibold text-base block mb-0.5 ${item.highlight ? "text-earth-700" : "text-forest-900"}`}>
+                        <span className="font-semibold text-base block mb-0.5" style={{ color: item.highlight ? "#C46060" : "rgba(255,255,255,0.85)" }}>
                           {item.event}
                         </span>
-                        <span className="text-sm text-forest-700/60">{item.detail}</span>
+                        <span className="text-sm" style={{ color: "rgba(200,230,180,0.4)" }}>{item.detail}</span>
                       </div>
                     </div>
                   </li>
@@ -297,19 +274,22 @@ export default function Home() {
         </section>
 
         {/* ===== FAQ ===== */}
-        <section id="faq" className="py-16 sm:py-20 bg-white">
+        <section id="faq" className="py-20" style={{ background: "#080d08", borderTop: "1px solid rgba(140,198,63,0.08)" }}>
           <div className="max-w-6xl mx-auto px-4 sm:px-6">
-            <div className="max-w-xl mb-10">
-              <h2 className="font-display text-3xl font-bold text-forest-900 mb-3">Questions fréquentes</h2>
-              <p className="text-forest-700/70">
+            <div className="max-w-xl mb-12">
+              <div className="ai-tag mb-4">FAQ</div>
+              <h2 className="font-display text-3xl font-bold mb-3" style={{ color: "rgba(255,255,255,0.92)" }}>
+                Questions <span className="text-gradient">fréquentes</span>
+              </h2>
+              <p style={{ color: "rgba(200,230,180,0.5)" }}>
                 Tout ce que vous devez savoir avant de candidater.
               </p>
             </div>
             <div className="max-w-3xl">
               <FaqAccordion />
-              <p className="mt-8 text-sm text-forest-700/50">
+              <p className="mt-8 text-sm" style={{ color: "rgba(200,230,180,0.35)" }}>
                 Une question non couverte ici ?{" "}
-                <Link href="/contact" className="text-forest-700 underline underline-offset-2 hover:text-earth-700 transition-colors">
+                <Link href="/contact" className="underline underline-offset-2 transition-colors" style={{ color: "rgba(140,198,63,0.7)" }}>
                   Écrivez-nous
                 </Link>{" "}
                 — nous répondons sous 48h.
@@ -319,19 +299,20 @@ export default function Home() {
         </section>
 
         {/* ===== CTA FINAL ===== */}
-        <section className="py-14 sm:py-18 bg-forest-900 circuit-bg relative overflow-hidden">
-          <div className="absolute inset-0 bg-forest-900/95 pointer-events-none" />
+        <section className="py-20 relative overflow-hidden" style={{ background: "#060d07", borderTop: "1px solid rgba(140,198,63,0.1)" }}>
+          <div className="orb" style={{ width: 600, height: 600, top: "50%", left: "50%", transform: "translate(-50%,-50%)", background: "radial-gradient(circle, rgba(140,198,63,0.12) 0%, transparent 65%)" }} />
+          <div className="scan-line absolute inset-0 pointer-events-none overflow-hidden" />
           <div className="relative max-w-6xl mx-auto px-4 sm:px-6 text-center">
-            <div className="inline-flex items-center gap-2 bg-leaf-400/15 border border-leaf-400/20 rounded-full px-3 py-1 text-xs font-semibold text-leaf-300 mb-5">
+            <div className="ai-tag mx-auto mb-6" style={{ width: "fit-content" }}>
               Candidatures ouvertes jusqu'au 15 octobre 2026
             </div>
-            <h2 className="font-display text-3xl sm:text-4xl font-bold text-white mb-4">
-              Prêt à concourir ?
+            <h2 className="font-display font-black mb-4" style={{ fontSize: "clamp(2rem,4vw,3.2rem)", color: "rgba(255,255,255,0.95)" }}>
+              Prêt à <span className="text-gradient">concourir</span> ?
             </h2>
-            <p className="text-leaf-100/60 text-base mb-8 max-w-lg mx-auto">
-              Comptez environ 20 minutes pour remplir le formulaire. Vous pouvez sauvegarder et revenir avant la clôture.
+            <p className="text-base mb-10 max-w-lg mx-auto" style={{ color: "rgba(200,230,180,0.5)" }}>
+              Comptez environ 20 minutes pour remplir le formulaire.
             </p>
-            <Link href="/candidater" className="btn-primary text-sm inline-flex mx-auto">
+            <Link href="/candidater" className="btn-ai text-sm inline-flex mx-auto">
               Déposer ma candidature
               <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden>
                 <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
@@ -342,20 +323,20 @@ export default function Home() {
       </main>
 
       {/* Footer */}
-      <footer className="bg-forest-900 border-t border-forest-800/60 py-8">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 text-sm text-leaf-100/40">
+      <footer style={{ background: "#040a05", borderTop: "1px solid rgba(140,198,63,0.1)" }} className="py-8">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 text-sm" style={{ color: "rgba(200,230,180,0.3)" }}>
           <div>
-            <div className="font-semibold text-leaf-100/60 mb-0.5">IA4EARTH Startup Challenge</div>
+            <div className="font-semibold mb-0.5" style={{ color: "rgba(200,230,180,0.55)" }}>IA4EARTH Startup Challenge</div>
             <div>3ème édition du Salon de l'Économie Verte, Finance Responsable et Développement Durable</div>
           </div>
           <div className="flex flex-wrap gap-5 items-center">
             <Link href="/reglement" className="hover:text-leaf-300 transition-colors">Règlement</Link>
             <Link href="/#faq" className="hover:text-leaf-300 transition-colors">FAQ</Link>
             <Link href="/contact" className="hover:text-leaf-300 transition-colors">Contact</Link>
-            <Link href="/jury" className="border border-leaf-400/20 rounded px-2.5 py-1 text-leaf-400/60 hover:text-leaf-300 hover:border-leaf-400/40 transition-colors text-xs font-medium">
+            <Link href="/jury" className="text-xs font-medium px-2.5 py-1 rounded transition-colors hover:text-leaf-300" style={{ border: "1px solid rgba(140,198,63,0.15)" }}>
               Espace jury
             </Link>
-            <Link href="/admin" className="border border-leaf-400/20 rounded px-2.5 py-1 text-leaf-400/60 hover:text-leaf-300 hover:border-leaf-400/40 transition-colors text-xs font-medium">
+            <Link href="/admin" className="text-xs font-medium px-2.5 py-1 rounded transition-colors hover:text-leaf-300" style={{ border: "1px solid rgba(140,198,63,0.15)" }}>
               Admin
             </Link>
           </div>

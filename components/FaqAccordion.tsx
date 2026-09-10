@@ -45,37 +45,37 @@ export default function FaqAccordion() {
       {FAQ.map((item, i) => (
         <div
           key={i}
-          className="border border-leaf-200 rounded-xl overflow-hidden bg-white transition-shadow duration-200 hover:shadow-card"
+          className="rounded-xl overflow-hidden transition-all duration-200"
+          style={{
+            background: "rgba(22,55,24,0.4)",
+            border: `1px solid ${open === i ? "rgba(140,198,63,0.35)" : "rgba(140,198,63,0.12)"}`,
+            backdropFilter: "blur(12px)",
+          }}
         >
           <button
             onClick={() => setOpen(open === i ? null : i)}
             className="w-full flex items-center justify-between gap-4 px-5 py-4 text-left"
             aria-expanded={open === i}
           >
-            <span className="font-semibold text-forest-900 text-sm leading-snug">
+            <span className="font-semibold text-sm leading-snug" style={{ color: "rgba(220,240,200,0.9)" }}>
               {item.q}
             </span>
             <div
-              className={`shrink-0 w-6 h-6 rounded-full border-2 flex items-center justify-center transition-all duration-200 ${
-                open === i
-                  ? "bg-forest-700 border-forest-700 rotate-45"
-                  : "border-leaf-300"
-              }`}
+              className={`shrink-0 w-6 h-6 rounded-full flex items-center justify-center transition-all duration-200 ${open === i ? "rotate-45" : ""}`}
+              style={{
+                border: `1.5px solid ${open === i ? "#8CC63F" : "rgba(140,198,63,0.35)"}`,
+                background: open === i ? "rgba(140,198,63,0.15)" : "transparent",
+              }}
             >
               <svg width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden>
-                <path
-                  d="M5 2v6M2 5h6"
-                  stroke={open === i ? "white" : "#8CC63F"}
-                  strokeWidth="1.6"
-                  strokeLinecap="round"
-                />
+                <path d="M5 2v6M2 5h6" stroke="#8CC63F" strokeWidth="1.6" strokeLinecap="round" />
               </svg>
             </div>
           </button>
 
           {open === i && (
             <div className="px-5 pb-5">
-              <div className="border-t border-leaf-100 pt-4 text-sm text-forest-700/80 leading-relaxed">
+              <div className="pt-3 text-sm leading-relaxed" style={{ borderTop: "1px solid rgba(140,198,63,0.1)", color: "rgba(200,230,180,0.6)" }}>
                 {item.a}
               </div>
             </div>
