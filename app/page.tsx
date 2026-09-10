@@ -355,6 +355,9 @@ export default function Home() {
             <Link href="/jury" className="border border-leaf-400/20 rounded px-2.5 py-1 text-leaf-400/60 hover:text-leaf-300 hover:border-leaf-400/40 transition-colors text-xs font-medium">
               Espace jury
             </Link>
+            <Link href="/admin" className="border border-leaf-400/20 rounded px-2.5 py-1 text-leaf-400/60 hover:text-leaf-300 hover:border-leaf-400/40 transition-colors text-xs font-medium">
+              Admin
+            </Link>
           </div>
         </div>
       </footer>
