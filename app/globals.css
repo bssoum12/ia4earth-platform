@@ -1,26 +1,246 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+/* ============================================================
+   Design tokens — palette IA4EARTH (Salon ÉV FR DD)
+   Extraits de la charte graphique du Salon
+   ============================================================ */
+@theme {
+  /* Vert feuille — couleur signature des supports print */
+  --color-leaf-50:  #F4FBEA;
+  --color-leaf-100: #EBF7D4;
+  --color-leaf-200: #D4EFA5;
+  --color-leaf-300: #B8E070;
+  --color-leaf-400: #8CC63F;
+  --color-leaf-500: #6FAF28;
+  --color-leaf-600: #56901A;
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+  /* Vert forêt profond — textes, titres, autorité institutionnelle */
+  --color-forest-600: #3D7A3F;
+  --color-forest-700: #2D6030;
+  --color-forest-800: #1F4820;
+  --color-forest-900: #163718;
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  /* Bordeaux-brique — CTA chaud, dates clés */
+  --color-earth-100: #F5E8E8;
+  --color-earth-400: #C46060;
+  --color-earth-600: #A03838;
+  --color-earth-700: #8B2E2E;
+  --color-earth-800: #6E2020;
+
+  /* Teal émeraude — motif circuit imprimé, liens actifs, focus */
+  --color-circuit-400: #2ABFA0;
+  --color-circuit-500: #009B70;
+  --color-circuit-600: #007A56;
+
+  /* Fond de carte */
+  --color-card:        #FAFFF5;
+  --color-card-border: #D4EFA5;
+
+  /* Typographie */
+  --font-sans:    "Inter", system-ui, sans-serif;
+  --font-display: "Plus Jakarta Sans", "Inter", sans-serif;
+  --font-mono:    "DM Mono", ui-monospace, monospace;
+
+  /* Taille de texte extra-petite */
+  --text-2xs: 0.688rem;
+  --text-2xs--line-height: 1rem;
+
+  /* Espacements supplémentaires */
+  --spacing-18: 4.5rem;
+  --spacing-22: 5.5rem;
+  --spacing-26: 6.5rem;
+  --spacing-30: 7.5rem;
+
+  /* Ombres */
+  --shadow-card:      0 1px 3px rgba(22,55,24,0.08), 0 0 0 1px rgba(212,239,165,0.6);
+  --shadow-card-hover: 0 4px 16px rgba(22,55,24,0.12), 0 0 0 1px rgba(140,198,63,0.3);
+  --shadow-cta:       0 4px 14px rgba(139,46,46,0.3);
+
+  /* Animations */
+  --animate-fade-up:    fade-up 0.5s ease both;
+  --animate-pulse-slow: pulse-slow 3s ease-in-out infinite;
+
+  @keyframes fade-up {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes pulse-slow {
+    0%, 100% { opacity: 1; }
+    50%       { opacity: 0.6; }
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* ============================================================
+   Base
+   ============================================================ */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    background-color: var(--color-leaf-50);
+    color: var(--color-forest-900);
+    font-family: var(--font-sans);
+  }
+
+  h1, h2, h3, h4, h5 {
+    font-family: var(--font-display);
+  }
+
+  :focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 2px var(--color-circuit-500), 0 0 0 4px var(--color-leaf-50);
+  }
+
+  ::-webkit-scrollbar { width: 6px; height: 6px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-leaf-200);
+    border-radius: 9999px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--color-leaf-300);
+  }
+}
+
+/* ============================================================
+   Components
+   ============================================================ */
+@layer components {
+  /* Motif circuit SVG en filigrane */
+  .circuit-bg {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80'%3E%3Cpath d='M10 40 H30 M30 40 L40 30 M40 30 H60 M60 30 V50 M60 50 H70' stroke='%23009B70' stroke-width='1' stroke-opacity='0.15' fill='none'/%3E%3Ccircle cx='30' cy='40' r='2.5' fill='%23009B70' fill-opacity='0.2'/%3E%3Ccircle cx='60' cy='30' r='2.5' fill='%23009B70' fill-opacity='0.2'/%3E%3Ccircle cx='60' cy='50' r='2.5' fill='%23009B70' fill-opacity='0.2'/%3E%3Cpath d='M20 10 V25 M20 25 H40 M40 25 V10' stroke='%23009B70' stroke-width='1' stroke-opacity='0.10' fill='none'/%3E%3C/svg%3E");
+    background-repeat: repeat;
+    background-size: 80px 80px;
+  }
+
+  /* Chip de thématique */
+  .thematic-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 14px;
+    border-radius: 9999px;
+    border: 1px solid var(--color-leaf-300);
+    background: white;
+    color: var(--color-forest-700);
+    font-size: 0.8125rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    user-select: none;
+  }
+  .thematic-chip:hover {
+    border-color: var(--color-leaf-400);
+    background: var(--color-leaf-50);
+  }
+  .thematic-chip.active {
+    border-color: var(--color-forest-700);
+    background: var(--color-forest-700);
+    color: white;
+  }
+
+  /* Bouton primaire (bordeaux chaud) */
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 11px 20px;
+    border-radius: 4px;
+    background: var(--color-earth-700);
+    color: white;
+    font-family: var(--font-sans);
+    font-weight: 600;
+    font-size: 0.875rem;
+    text-decoration: none;
+    cursor: pointer;
+    border: none;
+    box-shadow: var(--shadow-cta);
+    transition: all 0.15s ease;
+  }
+  .btn-primary:hover { background: var(--color-earth-800); }
+  .btn-primary:active { transform: scale(0.98); }
+  .btn-primary:focus-visible {
+    box-shadow: 0 0 0 2px var(--color-earth-400), 0 0 0 4px var(--color-leaf-50);
+  }
+  .btn-primary:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+
+  /* Bouton secondaire (ghost) */
+  .btn-ghost {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 11px 20px;
+    border-radius: 4px;
+    background: transparent;
+    color: var(--color-forest-700);
+    font-family: var(--font-sans);
+    font-weight: 600;
+    font-size: 0.875rem;
+    text-decoration: none;
+    cursor: pointer;
+    border: 1px solid var(--color-forest-700);
+    transition: all 0.15s ease;
+  }
+  .btn-ghost:hover { background: var(--color-leaf-100); }
+  .btn-ghost:active { transform: scale(0.98); }
+
+  /* Card surface */
+  .surface-card {
+    background: var(--color-card);
+    border: 1px solid var(--color-card-border);
+    box-shadow: var(--shadow-card);
+  }
+
+  /* Form inputs */
+  .form-input {
+    width: 100%;
+    border: 1px solid var(--color-leaf-200);
+    border-radius: 4px;
+    padding: 10px 12px;
+    background: white;
+    color: var(--color-forest-900);
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    transition: border-color 0.15s, box-shadow 0.15s;
+  }
+  .form-input::placeholder { color: color-mix(in srgb, var(--color-forest-600) 40%, transparent); }
+  .form-input:focus {
+    outline: none;
+    border-color: var(--color-circuit-500);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-circuit-500) 15%, transparent);
+  }
+  .form-input.error {
+    border-color: var(--color-earth-600);
+  }
+  .form-input.error:focus {
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-earth-400) 20%, transparent);
+  }
+  textarea.form-input {
+    resize: vertical;
+    min-height: 88px;
+  }
+
+  .form-label {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--color-forest-800);
+    margin-bottom: 6px;
+    letter-spacing: 0.02em;
+  }
+  .form-hint {
+    font-size: 0.688rem;
+    color: color-mix(in srgb, var(--color-forest-700) 60%, transparent);
+    margin-top: 4px;
+  }
+  .form-error {
+    font-size: 0.688rem;
+    color: var(--color-earth-700);
+    margin-top: 4px;
+    font-weight: 500;
+  }
 }
