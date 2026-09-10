@@ -8,6 +8,7 @@ const NAV_LINKS = [
   { href: "/#eligibilite", label: "Éligibilité" },
   { href: "/#prix", label: "Prix" },
   { href: "/reglement", label: "Règlement" },
+  { href: "/#faq", label: "FAQ" },
   { href: "/contact", label: "Contact" },
 ];
 
