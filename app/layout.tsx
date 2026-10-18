@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, Plus_Jakarta_Sans, DM_Mono } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 
 const inter = Inter({
@@ -48,7 +49,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="fr" className={`${inter.variable} ${jakarta.variable} ${dmMono.variable}`}>
-      <body className="font-sans antialiased">{children}</body>
+      <body className="font-sans antialiased">
+        {children}
+        <Analytics />
+      </body>
     </html>
   );
 }
