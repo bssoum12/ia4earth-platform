@@ -9,8 +9,8 @@ export const dynamic = "force-dynamic";
 const CALENDRIER = [
   { date: "12 sept. 2026", event: "Lancement officiel", detail: "Ouverture des candidatures, 10h00", done: true },
   { date: "15 oct. 2026", event: "Clôture des candidatures", detail: "23h59, sans prolongation (Art. 5)", done: false, highlight: true },
-  { date: "16–25 oct.", event: "Présélection sur dossier", detail: "Évaluation par la commission de présélection", done: false },
-  { date: "28 oct. 2026", event: "Annonce des finalistes", detail: "6 à 10 startups retenues", done: false },
+  { date: "16 oct.–2 nov.", event: "Présélection sur dossier", detail: "Évaluation par la commission de présélection", done: false },
+  { date: "3 nov. 2026", event: "Annonce des finalistes", detail: "6 à 10 startups retenues", done: false },
   { date: "5–6 nov. 2026", event: "Finale & remise des prix", detail: "UTICA, Tunis — pendant le Salon", done: false },
 ];
 
@@ -192,7 +192,7 @@ export default function Home() {
               const steps = [
                 { date: "12 sept.", label: "Ouverture", sub: "Candidatures ouvertes", done: true },
                 { date: "15 oct.", label: "Clôture", sub: "23h59 — sans prolongation", highlight: true },
-                { date: "28 oct.", label: "Finalistes", sub: "Annonce des sélectionnés" },
+                { date: "3 nov.", label: "Finalistes", sub: "Annonce des sélectionnés" },
                 { date: "5–6 nov.", label: "Finale", sub: "Pitchs & remise des prix" },
               ];
               return (
