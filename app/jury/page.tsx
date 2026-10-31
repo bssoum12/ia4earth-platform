@@ -29,12 +29,12 @@ export default function JuryLoginPage() {
   }
 
   return (
-    <div className="min-h-screen bg-[#163718] flex items-center justify-center px-4">
+    <div className="min-h-screen bg-[#062B24] flex items-center justify-center px-4">
       <div className="w-full max-w-sm">
         {/* Logo */}
         <div className="text-center mb-8">
           <div className="inline-flex items-center gap-2 mb-4">
-            <svg className="w-8 h-8 text-[#8CC63F]" viewBox="0 0 32 32" fill="none">
+            <svg className="w-8 h-8 text-[#A7FF83]" viewBox="0 0 32 32" fill="none">
               <circle cx="16" cy="16" r="14" stroke="currentColor" strokeWidth="2" />
               <path d="M10 22 L16 10 L22 22" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
               <path d="M12 18 h8" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
@@ -60,7 +60,7 @@ export default function JuryLoginPage() {
               autoComplete="off"
               spellCheck={false}
               placeholder="ex : abc123def456…"
-              className="w-full bg-white/10 border border-white/20 rounded-lg px-3 py-2.5 text-white placeholder-white/30 focus:outline-none focus:ring-2 focus:ring-[#8CC63F] focus:border-transparent font-mono text-sm"
+              className="w-full bg-white/10 border border-white/20 rounded-lg px-3 py-2.5 text-white placeholder-white/30 focus:outline-none focus:ring-2 focus:ring-[#A7FF83] focus:border-transparent font-mono text-sm"
             />
           </div>
 
@@ -73,7 +73,7 @@ export default function JuryLoginPage() {
           <button
             type="submit"
             disabled={loading || !token.trim()}
-            className="w-full py-2.5 bg-[#8CC63F] hover:bg-[#8CC63F]/90 text-[#163718] font-semibold rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+            className="w-full py-2.5 bg-[#1B8E6D] hover:bg-[#1B8E6D]/90 text-white font-semibold rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
           >
             {loading ? "Vérification…" : "Accéder à mon espace"}
           </button>

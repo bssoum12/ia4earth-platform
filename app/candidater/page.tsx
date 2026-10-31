@@ -79,8 +79,8 @@ export default function CandidaterPage() {
                 <div className="bg-earth-100 border border-earth-400/20 rounded-xl p-4 sm:p-5">
                   <div className="font-bold text-earth-700 text-sm mb-1.5 flex items-center gap-1.5">
                     <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden>
-                      <circle cx="8" cy="8" r="7" stroke="#8B2E2E" strokeWidth="1.5"/>
-                      <path d="M8 5v3.5M8 11v.5" stroke="#8B2E2E" strokeWidth="1.5" strokeLinecap="round"/>
+                      <circle cx="8" cy="8" r="7" stroke="#636164" strokeWidth="1.5"/>
+                      <path d="M8 5v3.5M8 11v.5" stroke="#636164" strokeWidth="1.5" strokeLinecap="round"/>
                     </svg>
                     Clôture stricte
                   </div>

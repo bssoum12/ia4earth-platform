@@ -5,36 +5,36 @@
    Extraits de la charte graphique du Salon
    ============================================================ */
 @theme {
-  /* Vert feuille — couleur signature des supports print */
-  --color-leaf-50:  #F4FBEA;
-  --color-leaf-100: #EBF7D4;
-  --color-leaf-200: #D4EFA5;
-  --color-leaf-300: #B8E070;
-  --color-leaf-400: #8CC63F;
-  --color-leaf-500: #6FAF28;
-  --color-leaf-600: #56901A;
+  /* Vert pastel — fond page et cartes */
+  --color-leaf-50:  #F4F8F6;
+  --color-leaf-100: #E5F4EF;
+  --color-leaf-200: #C0E4D5;
+  --color-leaf-300: #6E9836;
+  --color-leaf-400: #A7FF83;
+  --color-leaf-500: #6E9836;
+  --color-leaf-600: #527228;
 
-  /* Vert forêt profond — textes, titres, autorité institutionnelle */
-  --color-forest-600: #3D7A3F;
-  --color-forest-700: #2D6030;
-  --color-forest-800: #1F4820;
-  --color-forest-900: #163718;
+  /* Vert profond — textes, titres, autorité institutionnelle */
+  --color-forest-600: #1B8E6D;
+  --color-forest-700: #0F5A45;
+  --color-forest-800: #083A2E;
+  --color-forest-900: #062B24;
 
-  /* Bordeaux-brique — CTA chaud, dates clés */
-  --color-earth-100: #F5E8E8;
-  --color-earth-400: #C46060;
-  --color-earth-600: #A03838;
-  --color-earth-700: #8B2E2E;
-  --color-earth-800: #6E2020;
+  /* Gris neutre — état fermé, éléments désactivés */
+  --color-earth-100: #EFEFEF;
+  --color-earth-400: #8A8889;
+  --color-earth-600: #504F50;
+  --color-earth-700: #636164;
+  --color-earth-800: #3D3B3C;
 
-  /* Teal émeraude — motif circuit imprimé, liens actifs, focus */
-  --color-circuit-400: #2ABFA0;
-  --color-circuit-500: #009B70;
-  --color-circuit-600: #007A56;
+  /* Turquoise — liens actifs, focus, accents */
+  --color-circuit-400: #6BCED6;
+  --color-circuit-500: #23ABB6;
+  --color-circuit-600: #1A8A93;
 
   /* Fond de carte */
-  --color-card:        #FAFFF5;
-  --color-card-border: #D4EFA5;
+  --color-card:        #F8FFFC;
+  --color-card-border: #C0E4D5;
 
   /* Typographie */
   --font-sans:    "Inter", system-ui, sans-serif;
@@ -52,9 +52,9 @@
   --spacing-30: 7.5rem;
 
   /* Ombres */
-  --shadow-card:      0 1px 3px rgba(22,55,24,0.08), 0 0 0 1px rgba(212,239,165,0.6);
-  --shadow-card-hover: 0 4px 16px rgba(22,55,24,0.12), 0 0 0 1px rgba(140,198,63,0.3);
-  --shadow-cta:       0 4px 14px rgba(139,46,46,0.3);
+  --shadow-card:      0 1px 3px rgba(6,43,36,0.08), 0 0 0 1px rgba(192,228,213,0.6);
+  --shadow-card-hover: 0 4px 16px rgba(6,43,36,0.12), 0 0 0 1px rgba(167,255,131,0.3);
+  --shadow-cta:       0 4px 14px rgba(15,90,69,0.3);
 
   /* Animations */
   --animate-fade-up:    fade-up 0.5s ease both;
@@ -78,8 +78,8 @@
     50%       { transform: translateY(-24px) scale(1.04); }
   }
   @keyframes glow-pulse {
-    0%, 100% { box-shadow: 0 0 20px rgba(140,198,63,0.3), 0 0 60px rgba(140,198,63,0.1); }
-    50%       { box-shadow: 0 0 40px rgba(140,198,63,0.6), 0 0 100px rgba(140,198,63,0.25); }
+    0%, 100% { box-shadow: 0 0 20px rgba(167,255,131,0.3), 0 0 60px rgba(167,255,131,0.1); }
+    50%       { box-shadow: 0 0 40px rgba(167,255,131,0.6), 0 0 100px rgba(167,255,131,0.25); }
   }
   @keyframes spin-slow {
     from { transform: rotate(0deg); }
@@ -143,7 +143,7 @@
 @layer components {
   /* Motif circuit SVG en filigrane */
   .circuit-bg {
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80'%3E%3Cpath d='M10 40 H30 M30 40 L40 30 M40 30 H60 M60 30 V50 M60 50 H70' stroke='%23009B70' stroke-width='1' stroke-opacity='0.15' fill='none'/%3E%3Ccircle cx='30' cy='40' r='2.5' fill='%23009B70' fill-opacity='0.2'/%3E%3Ccircle cx='60' cy='30' r='2.5' fill='%23009B70' fill-opacity='0.2'/%3E%3Ccircle cx='60' cy='50' r='2.5' fill='%23009B70' fill-opacity='0.2'/%3E%3Cpath d='M20 10 V25 M20 25 H40 M40 25 V10' stroke='%23009B70' stroke-width='1' stroke-opacity='0.10' fill='none'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80'%3E%3Cpath d='M10 40 H30 M30 40 L40 30 M40 30 H60 M60 30 V50 M60 50 H70' stroke='%2323ABB6' stroke-width='1' stroke-opacity='0.15' fill='none'/%3E%3Ccircle cx='30' cy='40' r='2.5' fill='%2323ABB6' fill-opacity='0.2'/%3E%3Ccircle cx='60' cy='30' r='2.5' fill='%2323ABB6' fill-opacity='0.2'/%3E%3Ccircle cx='60' cy='50' r='2.5' fill='%2323ABB6' fill-opacity='0.2'/%3E%3Cpath d='M20 10 V25 M20 25 H40 M40 25 V10' stroke='%2323ABB6' stroke-width='1' stroke-opacity='0.10' fill='none'/%3E%3C/svg%3E");
     background-repeat: repeat;
     background-size: 80px 80px;
   }
@@ -181,7 +181,7 @@
     gap: 8px;
     padding: 11px 20px;
     border-radius: 4px;
-    background: var(--color-earth-700);
+    background: var(--color-forest-700);
     color: white;
     font-family: var(--font-sans);
     font-weight: 600;
@@ -192,10 +192,10 @@
     box-shadow: var(--shadow-cta);
     transition: all 0.15s ease;
   }
-  .btn-primary:hover { background: var(--color-earth-800); }
+  .btn-primary:hover { background: var(--color-forest-800); }
   .btn-primary:active { transform: scale(0.98); }
   .btn-primary:focus-visible {
-    box-shadow: 0 0 0 2px var(--color-earth-400), 0 0 0 4px var(--color-leaf-50);
+    box-shadow: 0 0 0 2px var(--color-circuit-500), 0 0 0 4px var(--color-leaf-50);
   }
   .btn-primary:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
 
@@ -237,22 +237,22 @@
 
   /* Glassmorphism card */
   .glass-card {
-    background: rgba(30, 70, 32, 0.55);
+    background: rgba(6, 43, 36, 0.55);
     backdrop-filter: blur(24px);
     -webkit-backdrop-filter: blur(24px);
-    border: 1px solid rgba(140, 198, 63, 0.28);
+    border: 1px solid rgba(167, 255, 131, 0.28);
     box-shadow:
       0 4px 32px rgba(0,0,0,0.35),
-      inset 0 1px 0 rgba(140,198,63,0.18);
+      inset 0 1px 0 rgba(167,255,131,0.18);
   }
 
   /* Neon glow on hover */
   .glass-card:hover {
-    border-color: rgba(140, 198, 63, 0.55);
+    border-color: rgba(167, 255, 131, 0.55);
     box-shadow:
       0 8px 48px rgba(0,0,0,0.4),
-      0 0 28px rgba(140,198,63,0.2),
-      inset 0 1px 0 rgba(140,198,63,0.3);
+      0 0 28px rgba(167,255,131,0.2),
+      inset 0 1px 0 rgba(167,255,131,0.3);
   }
 
   /* 3D tilt card */
@@ -266,7 +266,7 @@
 
   /* Gradient text */
   .text-gradient {
-    background: linear-gradient(135deg, #8CC63F 0%, #2ABFA0 50%, #8CC63F 100%);
+    background: linear-gradient(135deg, #A7FF83 0%, #23ABB6 50%, #A7FF83 100%);
     background-size: 200% 200%;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -284,8 +284,8 @@
 
   /* Neon border */
   .neon-border {
-    border: 1px solid rgba(140,198,63,0.4);
-    box-shadow: 0 0 8px rgba(140,198,63,0.2), inset 0 0 8px rgba(140,198,63,0.05);
+    border: 1px solid rgba(167,255,131,0.4);
+    box-shadow: 0 0 8px rgba(167,255,131,0.2), inset 0 0 8px rgba(167,255,131,0.05);
     animation: border-glow 2.5s ease-in-out infinite;
   }
 
@@ -299,7 +299,7 @@
 
   /* Dot grid background */
   .dot-grid {
-    background-image: radial-gradient(rgba(140,198,63,0.28) 1px, transparent 1px);
+    background-image: radial-gradient(rgba(167,255,131,0.28) 1px, transparent 1px);
     background-size: 28px 28px;
   }
 
@@ -310,7 +310,7 @@
     left: 0;
     right: 0;
     height: 2px;
-    background: linear-gradient(90deg, transparent, rgba(140,198,63,0.5), transparent);
+    background: linear-gradient(90deg, transparent, rgba(167,255,131,0.5), transparent);
     animation: scan 3s linear infinite;
     pointer-events: none;
   }
@@ -327,9 +327,9 @@
     gap: 6px;
     padding: 4px 12px;
     border-radius: 9999px;
-    border: 1px solid rgba(140,198,63,0.35);
-    background: rgba(140,198,63,0.08);
-    color: #8CC63F;
+    border: 1px solid rgba(167,255,131,0.35);
+    background: rgba(167,255,131,0.08);
+    color: #A7FF83;
     font-size: 0.75rem;
     font-weight: 700;
     letter-spacing: 0.06em;
@@ -343,8 +343,8 @@
     gap: 8px;
     padding: 13px 28px;
     border-radius: 6px;
-    background: linear-gradient(135deg, #8CC63F, #56901A);
-    color: #0a1a0b;
+    background: linear-gradient(135deg, #A7FF83, #6E9836);
+    color: #062B24;
     font-weight: 700;
     font-size: 0.9rem;
     text-decoration: none;
@@ -353,7 +353,7 @@
     position: relative;
     overflow: hidden;
     transition: all 0.2s ease;
-    box-shadow: 0 4px 20px rgba(140,198,63,0.35), 0 1px 0 rgba(255,255,255,0.15) inset;
+    box-shadow: 0 4px 20px rgba(167,255,131,0.35), 0 1px 0 rgba(255,255,255,0.15) inset;
   }
   .btn-ai::before {
     content: "";
@@ -365,7 +365,7 @@
   }
   .btn-ai:hover {
     transform: translateY(-1px);
-    box-shadow: 0 8px 32px rgba(140,198,63,0.5), 0 1px 0 rgba(255,255,255,0.15) inset;
+    box-shadow: 0 8px 32px rgba(167,255,131,0.5), 0 1px 0 rgba(255,255,255,0.15) inset;
   }
   .btn-ai:hover::before { opacity: 1; }
   .btn-ai:active { transform: scale(0.98); }
@@ -378,19 +378,19 @@
     padding: 13px 28px;
     border-radius: 6px;
     background: transparent;
-    color: rgba(140,198,63,0.9);
+    color: rgba(167,255,131,0.9);
     font-weight: 600;
     font-size: 0.9rem;
     text-decoration: none;
     cursor: pointer;
-    border: 1px solid rgba(140,198,63,0.4);
+    border: 1px solid rgba(167,255,131,0.4);
     transition: all 0.2s ease;
     backdrop-filter: blur(8px);
   }
   .btn-ai-ghost:hover {
-    background: rgba(140,198,63,0.08);
-    border-color: rgba(140,198,63,0.7);
-    box-shadow: 0 0 16px rgba(140,198,63,0.15);
+    background: rgba(167,255,131,0.08);
+    border-color: rgba(167,255,131,0.7);
+    box-shadow: 0 0 16px rgba(167,255,131,0.15);
   }
 
   /* Form inputs */

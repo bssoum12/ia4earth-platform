@@ -25,9 +25,9 @@ export default function Navbar() {
           <div className="w-8 h-8 rounded-full bg-leaf-400/20 border border-leaf-400/30 flex items-center justify-center">
             {/* Icône feuille + circuit */}
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden>
-              <path d="M8 2C5 2 3 4 3 7c0 2 1 3.5 3 4.5" stroke="#8CC63F" strokeWidth="1.5" strokeLinecap="round"/>
-              <path d="M8 2c3 0 5 2 5 5 0 2-1 3.5-3 4.5" stroke="#009B70" strokeWidth="1.5" strokeLinecap="round"/>
-              <line x1="8" y1="11.5" x2="8" y2="14" stroke="#8CC63F" strokeWidth="1.5" strokeLinecap="round"/>
+              <path d="M8 2C5 2 3 4 3 7c0 2 1 3.5 3 4.5" stroke="#A7FF83" strokeWidth="1.5" strokeLinecap="round"/>
+              <path d="M8 2c3 0 5 2 5 5 0 2-1 3.5-3 4.5" stroke="#23ABB6" strokeWidth="1.5" strokeLinecap="round"/>
+              <line x1="8" y1="11.5" x2="8" y2="14" stroke="#A7FF83" strokeWidth="1.5" strokeLinecap="round"/>
             </svg>
           </div>
           <span className="font-display font-bold text-white text-sm sm:text-base leading-tight">

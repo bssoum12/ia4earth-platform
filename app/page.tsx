@@ -25,11 +25,11 @@ const PRIX = [
 function FloatingLeaf({ className, style }: { className?: string; style?: React.CSSProperties }) {
   return (
     <svg viewBox="0 0 60 80" fill="none" xmlns="http://www.w3.org/2000/svg" className={className} style={style} aria-hidden>
-      <path d="M30 75 C30 75 5 55 5 30 C5 10 18 2 30 2 C42 2 55 10 55 30 C55 55 30 75 30 75Z" fill="#8CC63F" fillOpacity="0.35" />
-      <path d="M30 75 C30 75 5 55 5 30 C5 10 18 2 30 2" stroke="#56901A" strokeWidth="1.2" strokeOpacity="0.5" fill="none" />
-      <line x1="30" y1="8" x2="30" y2="72" stroke="#56901A" strokeWidth="0.8" strokeOpacity="0.4" />
-      <line x1="30" y1="25" x2="12" y2="42" stroke="#56901A" strokeWidth="0.6" strokeOpacity="0.3" />
-      <line x1="30" y1="25" x2="48" y2="42" stroke="#56901A" strokeWidth="0.6" strokeOpacity="0.3" />
+      <path d="M30 75 C30 75 5 55 5 30 C5 10 18 2 30 2 C42 2 55 10 55 30 C55 55 30 75 30 75Z" fill="#A7FF83" fillOpacity="0.35" />
+      <path d="M30 75 C30 75 5 55 5 30 C5 10 18 2 30 2" stroke="#527228" strokeWidth="1.2" strokeOpacity="0.5" fill="none" />
+      <line x1="30" y1="8" x2="30" y2="72" stroke="#527228" strokeWidth="0.8" strokeOpacity="0.4" />
+      <line x1="30" y1="25" x2="12" y2="42" stroke="#527228" strokeWidth="0.6" strokeOpacity="0.3" />
+      <line x1="30" y1="25" x2="48" y2="42" stroke="#527228" strokeWidth="0.6" strokeOpacity="0.3" />
     </svg>
   );
 }
@@ -42,9 +42,9 @@ export default function Home() {
       <main>
 
         {/* ===== HERO ===== */}
-        <section className="relative overflow-hidden circuit-bg" style={{ background: "linear-gradient(135deg, #eef8de 0%, #d8f0a8 40%, #e8f8cc 100%)" }}>
+        <section className="relative overflow-hidden circuit-bg" style={{ background: "linear-gradient(135deg, #F4F8F6 0%, #E5F4EF 40%, #F0FAF5 100%)" }}>
           {/* Overlay gradient */}
-          <div className="absolute inset-0" style={{ background: "linear-gradient(135deg, rgba(238,248,222,0.9) 0%, rgba(216,240,168,0.7) 60%, rgba(232,248,204,0.85) 100%)" }} />
+          <div className="absolute inset-0" style={{ background: "linear-gradient(135deg, rgba(244,248,246,0.9) 0%, rgba(229,244,239,0.7) 60%, rgba(240,250,245,0.85) 100%)" }} />
 
           {/* Feuilles décoratives flottantes */}
           <FloatingLeaf className="absolute animate-float" style={{ width: 90, height: 120, top: 40, right: "12%", opacity: 0.7, animationDelay: "0s" }} />
@@ -57,23 +57,23 @@ export default function Home() {
 
               {/* Gauche */}
               <div className="animate-fade-up">
-                <div className="inline-flex items-center gap-2 mb-5 px-3 py-1.5 rounded-full text-xs font-bold" style={{ background: "rgba(45,96,48,0.1)", border: "1px solid rgba(45,96,48,0.2)", color: "#2D6030" }}>
+                <div className="inline-flex items-center gap-2 mb-5 px-3 py-1.5 rounded-full text-xs font-bold" style={{ background: "rgba(15,90,69,0.1)", border: "1px solid rgba(15,90,69,0.2)", color: "#0F5A45" }}>
                   <span className={`w-1.5 h-1.5 rounded-full ${ouvert ? "bg-leaf-400 animate-pulse-slow" : "bg-earth-700"}`} />
                   3ème édition · Salon ÉV FR DD · {ouvert ? "Candidatures ouvertes" : "Candidatures closes"}
                 </div>
 
                 {/* Thème officiel */}
-                <p className="text-sm font-semibold mb-2 tracking-wide" style={{ color: "#2D6030" }}>
+                <p className="text-sm font-semibold mb-2 tracking-wide" style={{ color: "#0F5A45" }}>
                   3ème édition sous le thème :
                 </p>
-                <h1 className="font-display font-black leading-[1.05] mb-3" style={{ fontSize: "clamp(2.2rem,4.5vw,3.6rem)", color: "#8B2E2E" }}>
+                <h1 className="font-display font-black leading-[1.05] mb-3" style={{ fontSize: "clamp(2.2rem,4.5vw,3.6rem)", color: "#062B24" }}>
                   IA4EARTH : Innover pour<br />un monde durable
                 </h1>
-                <p className="font-display font-semibold text-lg mb-6" style={{ color: "#2D6030" }}>
+                <p className="font-display font-semibold text-lg mb-6" style={{ color: "#0F5A45" }}>
                   Startup Challenge — {ouvert ? "Candidatures ouvertes" : "Clôturée le 15 oct. 2026 · Finale le 5–6 nov."}
                 </p>
 
-                <p className="text-base mb-3 max-w-[50ch] leading-relaxed" style={{ color: "#1F4820" }}>
+                <p className="text-base mb-3 max-w-[50ch] leading-relaxed" style={{ color: "#083A2E" }}>
                   Le IA4EARTH Startup Challenge récompense les startups tunisiennes qui font
                   avancer l'économie verte, la finance responsable et le développement durable —{" "}
                   <strong>avec ou sans intelligence artificielle.</strong>
@@ -81,12 +81,12 @@ export default function Home() {
 
                 {/* Lieu + date (alignés sur le post) */}
                 <div className="flex flex-col gap-2 mb-8">
-                  <div className="flex items-center gap-2 text-sm font-semibold" style={{ color: "#2D6030" }}>
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden><rect x="3" y="4" width="18" height="18" rx="2" stroke="#2D6030" strokeWidth="1.8"/><line x1="3" y1="9" x2="21" y2="9" stroke="#2D6030" strokeWidth="1.8"/><line x1="8" y1="2" x2="8" y2="6" stroke="#2D6030" strokeWidth="1.8" strokeLinecap="round"/><line x1="16" y1="2" x2="16" y2="6" stroke="#2D6030" strokeWidth="1.8" strokeLinecap="round"/></svg>
+                  <div className="flex items-center gap-2 text-sm font-semibold" style={{ color: "#0F5A45" }}>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden><rect x="3" y="4" width="18" height="18" rx="2" stroke="#0F5A45" strokeWidth="1.8"/><line x1="3" y1="9" x2="21" y2="9" stroke="#0F5A45" strokeWidth="1.8"/><line x1="8" y1="2" x2="8" y2="6" stroke="#0F5A45" strokeWidth="1.8" strokeLinecap="round"/><line x1="16" y1="2" x2="16" y2="6" stroke="#0F5A45" strokeWidth="1.8" strokeLinecap="round"/></svg>
                     5–6 Novembre 2026
                   </div>
-                  <div className="flex items-center gap-2 text-sm font-semibold" style={{ color: "#2D6030" }}>
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" stroke="#2D6030" strokeWidth="1.8"/><circle cx="12" cy="9" r="2.5" stroke="#2D6030" strokeWidth="1.8"/></svg>
+                  <div className="flex items-center gap-2 text-sm font-semibold" style={{ color: "#0F5A45" }}>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" stroke="#0F5A45" strokeWidth="1.8"/><circle cx="12" cy="9" r="2.5" stroke="#0F5A45" strokeWidth="1.8"/></svg>
                     Centre International des Congrès – Siège de l'UTICA, Tunis
                   </div>
                 </div>
@@ -110,8 +110,8 @@ export default function Home() {
                   <div className="flex flex-wrap gap-3 mb-10">
                     <div className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-semibold bg-earth-100 border border-earth-400/30 text-earth-800">
                       <svg width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden>
-                        <circle cx="8" cy="8" r="6.5" stroke="#8B2E2E" strokeWidth="1.5"/>
-                        <path d="M5.5 8a2.5 2.5 0 015 0M8 5.5V8" stroke="#8B2E2E" strokeWidth="1.5" strokeLinecap="round"/>
+                        <circle cx="8" cy="8" r="6.5" stroke="#636164" strokeWidth="1.5"/>
+                        <path d="M5.5 8a2.5 2.5 0 015 0M8 5.5V8" stroke="#636164" strokeWidth="1.5" strokeLinecap="round"/>
                       </svg>
                       Candidatures closes depuis le 15 oct. 2026
                     </div>
@@ -124,8 +124,8 @@ export default function Home() {
 
               {/* Droite — carte éligibilité */}
               <div className="animate-fade-up [animation-delay:120ms]" id="eligibilite">
-                <div className="rounded-2xl overflow-hidden shadow-card-hover" style={{ border: "1px solid rgba(140,198,63,0.4)", background: "rgba(255,255,255,0.85)", backdropFilter: "blur(12px)" }}>
-                  <div className="px-6 py-4 flex items-center gap-3" style={{ background: "#2D6030" }}>
+                <div className="rounded-2xl overflow-hidden shadow-card-hover" style={{ border: "1px solid rgba(167,255,131,0.4)", background: "rgba(255,255,255,0.85)", backdropFilter: "blur(12px)" }}>
+                  <div className="px-6 py-4 flex items-center gap-3" style={{ background: "#062B24" }}>
                     <div className="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center shrink-0">
                       <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden>
                         <path d="M8 1.5a6.5 6.5 0 100 13 6.5 6.5 0 000-13zM4.5 8l2.5 2.5 4.5-4.5" stroke="white" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
@@ -133,7 +133,7 @@ export default function Home() {
                     </div>
                     <div>
                       <div className="text-white font-display font-bold text-base leading-tight">Vous êtes éligible si…</div>
-                      <div className="text-xs mt-0.5" style={{ color: "rgba(140,198,63,0.8)" }}>4 critères de recevabilité</div>
+                      <div className="text-xs mt-0.5" style={{ color: "rgba(167,255,131,0.8)" }}>4 critères de recevabilité</div>
                     </div>
                   </div>
 
@@ -146,33 +146,33 @@ export default function Home() {
                         { text: "L'IA n'est pas requise — elle est un plus, pas une condition", ref: "Art. 3.2" },
                       ].map(({ text, ref }, i) => (
                         <li key={i} className="flex gap-3 items-start">
-                          <div className="w-6 h-6 rounded-full flex items-center justify-center shrink-0 mt-0.5" style={{ background: "#EBF7D4", border: "1px solid #B8E070" }}>
+                          <div className="w-6 h-6 rounded-full flex items-center justify-center shrink-0 mt-0.5" style={{ background: "#E5F4EF", border: "1px solid #6E9836" }}>
                             <svg width="11" height="11" viewBox="0 0 12 12" fill="none" aria-hidden>
-                              <path d="M2.5 6l2.5 2.5 4.5-5" stroke="#2D6030" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+                              <path d="M2.5 6l2.5 2.5 4.5-5" stroke="#0F5A45" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
                             </svg>
                           </div>
                           <div>
-                            <span className="text-sm leading-snug" style={{ color: "#1F4820" }}>{text}</span>
-                            {ref && <span className="ml-1.5 text-2xs font-mono font-semibold" style={{ color: "rgba(45,96,48,0.45)" }}>({ref})</span>}
+                            <span className="text-sm leading-snug" style={{ color: "#083A2E" }}>{text}</span>
+                            {ref && <span className="ml-1.5 text-2xs font-mono font-semibold" style={{ color: "rgba(15,90,69,0.45)" }}>({ref})</span>}
                           </div>
                         </li>
                       ))}
                     </ul>
-                    <div className="mt-5 pt-4" style={{ borderTop: "1px solid #EBF7D4" }}>
+                    <div className="mt-5 pt-4" style={{ borderTop: "1px solid #E5F4EF" }}>
                       {ouvert ? (
                         <>
                           <Link href="/candidater" className="btn-primary w-full justify-center">
                             Déposer ma candidature →
                           </Link>
-                          <p className="text-2xs text-center mt-2" style={{ color: "rgba(45,96,48,0.45)" }}>
+                          <p className="text-2xs text-center mt-2" style={{ color: "rgba(15,90,69,0.45)" }}>
                             Clôture le 15 octobre 2026 à 23h59
                           </p>
                         </>
                       ) : (
                         <div className="flex items-center gap-2 justify-center px-3 py-2.5 rounded-lg text-sm font-semibold bg-earth-100 border border-earth-400/30 text-earth-800">
                           <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden>
-                            <circle cx="8" cy="8" r="6.5" stroke="#8B2E2E" strokeWidth="1.5"/>
-                            <path d="M5.5 8a2.5 2.5 0 015 0M8 5.5V8" stroke="#8B2E2E" strokeWidth="1.5" strokeLinecap="round"/>
+                            <circle cx="8" cy="8" r="6.5" stroke="#636164" strokeWidth="1.5"/>
+                            <path d="M5.5 8a2.5 2.5 0 015 0M8 5.5V8" stroke="#636164" strokeWidth="1.5" strokeLinecap="round"/>
                           </svg>
                           Candidatures closes — Finale le 5–6 nov.
                         </div>
@@ -225,7 +225,7 @@ export default function Home() {
         <section id="prix" className="py-16 sm:py-20 bg-white">
           <div className="max-w-6xl mx-auto px-4 sm:px-6">
             <div className="max-w-xl mb-10">
-              <h2 className="font-display text-3xl font-bold mb-3" style={{ color: "#8B2E2E" }}>Ce que vous gagnez</h2>
+              <h2 className="font-display text-3xl font-bold mb-3" style={{ color: "#062B24" }}>Ce que vous gagnez</h2>
               <p className="text-forest-700/70">Au-delà de la dotation, un accompagnement pensé pour durer après la cérémonie.</p>
             </div>
             <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -237,9 +237,9 @@ export default function Home() {
                 </div>
               ))}
             </div>
-            <div className="mt-6 rounded-2xl p-6 sm:p-8 grid sm:grid-cols-2 gap-6" style={{ background: "linear-gradient(135deg, #eef8de, #d8f0a8)", border: "1px solid #B8E070" }}>
+            <div className="mt-6 rounded-2xl p-6 sm:p-8 grid sm:grid-cols-2 gap-6" style={{ background: "linear-gradient(135deg, #F4F8F6, #E5F4EF)", border: "1px solid #C0E4D5" }}>
               <div>
-                <div className="inline-flex items-center gap-2 mb-3 px-2.5 py-1 rounded-full text-xs font-bold text-white" style={{ background: "#2D6030" }}>
+                <div className="inline-flex items-center gap-2 mb-3 px-2.5 py-1 rounded-full text-xs font-bold text-white" style={{ background: "#062B24" }}>
                   Accompagnement post-concours
                 </div>
                 <h3 className="font-display font-bold text-xl text-forest-900 mb-2">Un mentorat qui dure</h3>
@@ -254,10 +254,10 @@ export default function Home() {
         </section>
 
         {/* ===== CALENDRIER ===== */}
-        <section id="calendrier" className="py-16 sm:py-20 circuit-bg" style={{ background: "#eef8de" }}>
+        <section id="calendrier" className="py-16 sm:py-20 circuit-bg" style={{ background: "#F4F8F6" }}>
           <div className="max-w-6xl mx-auto px-4 sm:px-6">
             <div className="max-w-xl mb-10">
-              <h2 className="font-display text-3xl font-bold mb-3" style={{ color: "#8B2E2E" }}>Calendrier du concours</h2>
+              <h2 className="font-display text-3xl font-bold mb-3" style={{ color: "#062B24" }}>Calendrier du concours</h2>
               <p className="text-forest-700/70">Le calendrier s'applique sans exception — toute modification est communiquée par voie électronique.</p>
             </div>
             <div className="relative max-w-2xl">
@@ -292,7 +292,7 @@ export default function Home() {
         <section id="faq" className="py-16 sm:py-20 bg-white">
           <div className="max-w-6xl mx-auto px-4 sm:px-6">
             <div className="max-w-xl mb-10">
-              <h2 className="font-display text-3xl font-bold mb-3" style={{ color: "#8B2E2E" }}>Questions fréquentes</h2>
+              <h2 className="font-display text-3xl font-bold mb-3" style={{ color: "#062B24" }}>Questions fréquentes</h2>
               <p className="text-forest-700/70">Tout ce que vous devez savoir avant de candidater.</p>
             </div>
             <div className="max-w-3xl">
@@ -309,15 +309,15 @@ export default function Home() {
         </section>
 
         {/* ===== CTA FINAL ===== */}
-        <section className="py-14 sm:py-20 relative overflow-hidden circuit-bg" style={{ background: "#2D6030" }}>
-          <div className="absolute inset-0" style={{ background: "rgba(45,96,48,0.92)" }} />
+        <section className="py-14 sm:py-20 relative overflow-hidden circuit-bg" style={{ background: "#062B24" }}>
+          <div className="absolute inset-0" style={{ background: "rgba(6,43,36,0.92)" }} />
           {/* Feuilles décoratives */}
           <FloatingLeaf className="absolute animate-float-slow" style={{ width: 120, height: 160, top: -20, right: "5%", opacity: 0.2, animationDelay: "1s" }} />
           <FloatingLeaf className="absolute animate-float" style={{ width: 80, height: 110, bottom: -10, left: "4%", opacity: 0.15, animationDelay: "2s", transform: "rotate(-20deg) scaleX(-1)" }} />
           <div className="relative max-w-6xl mx-auto px-4 sm:px-6 text-center">
             {ouvert ? (
               <>
-                <div className="inline-flex items-center gap-2 mb-5 px-3 py-1.5 rounded-full text-xs font-bold" style={{ background: "rgba(140,198,63,0.2)", border: "1px solid rgba(140,198,63,0.3)", color: "#8CC63F" }}>
+                <div className="inline-flex items-center gap-2 mb-5 px-3 py-1.5 rounded-full text-xs font-bold" style={{ background: "rgba(167,255,131,0.2)", border: "1px solid rgba(167,255,131,0.3)", color: "#A7FF83" }}>
                   Candidatures ouvertes jusqu'au 15 octobre 2026
                 </div>
                 <h2 className="font-display font-black text-white mb-4" style={{ fontSize: "clamp(2rem,4vw,3rem)" }}>
@@ -326,7 +326,7 @@ export default function Home() {
                 <p className="text-leaf-100/70 text-base mb-8 max-w-lg mx-auto">
                   Comptez environ 20 minutes pour remplir le formulaire. Candidatures closes le 15 octobre 2026 à 23h59.
                 </p>
-                <Link href="/candidater" className="btn-primary inline-flex mx-auto" style={{ background: "#8B2E2E", boxShadow: "0 4px 20px rgba(139,46,46,0.4)" }}>
+                <Link href="/candidater" className="btn-primary inline-flex mx-auto" style={{ background: "#0F5A45", boxShadow: "0 4px 20px rgba(15,90,69,0.4)" }}>
                   Déposer ma candidature
                   <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden>
                     <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
@@ -335,7 +335,7 @@ export default function Home() {
               </>
             ) : (
               <>
-                <div className="inline-flex items-center gap-2 mb-5 px-3 py-1.5 rounded-full text-xs font-bold" style={{ background: "rgba(139,46,46,0.3)", border: "1px solid rgba(139,46,46,0.4)", color: "#f5a0a0" }}>
+                <div className="inline-flex items-center gap-2 mb-5 px-3 py-1.5 rounded-full text-xs font-bold" style={{ background: "rgba(6,43,36,0.3)", border: "1px solid rgba(6,43,36,0.4)", color: "rgba(167,255,131,0.9)" }}>
                   Candidatures closes · Phase de jury en cours
                 </div>
                 <h2 className="font-display font-black text-white mb-4" style={{ fontSize: "clamp(2rem,4vw,3rem)" }}>
