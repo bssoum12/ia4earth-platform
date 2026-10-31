@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useState } from "react";
 import { isCandidatureOuverte } from "@/lib/dates";
 
@@ -21,18 +22,17 @@ export default function Navbar() {
     <header className="sticky top-0 z-50 bg-forest-900 border-b border-forest-800/60 backdrop-blur-sm">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-4">
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-2.5 flex-none" aria-label="Accueil IA4EARTH">
-          <div className="w-8 h-8 rounded-full bg-leaf-400/20 border border-leaf-400/30 flex items-center justify-center">
-            {/* Icône feuille + circuit */}
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden>
-              <path d="M8 2C5 2 3 4 3 7c0 2 1 3.5 3 4.5" stroke="#A7FF83" strokeWidth="1.5" strokeLinecap="round"/>
-              <path d="M8 2c3 0 5 2 5 5 0 2-1 3.5-3 4.5" stroke="#23ABB6" strokeWidth="1.5" strokeLinecap="round"/>
-              <line x1="8" y1="11.5" x2="8" y2="14" stroke="#A7FF83" strokeWidth="1.5" strokeLinecap="round"/>
-            </svg>
+        <Link href="/" className="flex items-center gap-3 flex-none" aria-label="Accueil — Salon de l'Économie Verte">
+          <div className="bg-white rounded-lg px-2 py-1 flex items-center">
+            <Image
+              src="/logo-salon.png"
+              alt="Salon de l'Économie Verte, Finance Responsable et Développement Durable"
+              width={160}
+              height={40}
+              className="h-9 w-auto object-contain"
+              priority
+            />
           </div>
-          <span className="font-display font-bold text-white text-sm sm:text-base leading-tight">
-            IA4EARTH<span className="text-leaf-400 ml-0.5">.</span>
-          </span>
         </Link>
 
         {/* Nav desktop */}
