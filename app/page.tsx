@@ -2,6 +2,9 @@ import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import CountdownTimer from "@/components/CountdownTimer";
 import FaqAccordion from "@/components/FaqAccordion";
+import { isCandidatureOuverte } from "@/lib/dates";
+
+export const dynamic = "force-dynamic";
 
 const CALENDRIER = [
   { date: "12 sept. 2026", event: "Lancement officiel", detail: "Ouverture des candidatures, 10h00", done: true },
@@ -32,6 +35,7 @@ function FloatingLeaf({ className, style }: { className?: string; style?: React.
 }
 
 export default function Home() {
+  const ouvert = isCandidatureOuverte();
   return (
     <>
       <Navbar />
@@ -54,8 +58,8 @@ export default function Home() {
               {/* Gauche */}
               <div className="animate-fade-up">
                 <div className="inline-flex items-center gap-2 mb-5 px-3 py-1.5 rounded-full text-xs font-bold" style={{ background: "rgba(45,96,48,0.1)", border: "1px solid rgba(45,96,48,0.2)", color: "#2D6030" }}>
-                  <span className="w-1.5 h-1.5 rounded-full bg-leaf-400 animate-pulse-slow" />
-                  3ème édition · Salon ÉV FR DD · Candidatures ouvertes
+                  <span className={`w-1.5 h-1.5 rounded-full ${ouvert ? "bg-leaf-400 animate-pulse-slow" : "bg-earth-700"}`} />
+                  3ème édition · Salon ÉV FR DD · {ouvert ? "Candidatures ouvertes" : "Candidatures closes"}
                 </div>
 
                 {/* Thème officiel */}
@@ -66,7 +70,7 @@ export default function Home() {
                   IA4EARTH : Innover pour<br />un monde durable
                 </h1>
                 <p className="font-display font-semibold text-lg mb-6" style={{ color: "#2D6030" }}>
-                  Startup Challenge — Candidatures ouvertes
+                  Startup Challenge — {ouvert ? "Candidatures ouvertes" : "Clôturée le 15 oct. 2026 · Finale le 5–6 nov."}
                 </p>
 
                 <p className="text-base mb-3 max-w-[50ch] leading-relaxed" style={{ color: "#1F4820" }}>
@@ -87,20 +91,35 @@ export default function Home() {
                   </div>
                 </div>
 
-                <div className="flex flex-wrap gap-3 mb-10">
-                  <Link href="/candidater" className="btn-primary">
-                    Déposer ma candidature
-                    <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden>
-                      <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
-                    </svg>
-                  </Link>
-                  <Link href="/reglement" className="btn-ghost">
-                    Lire le règlement
-                  </Link>
-                </div>
-
-                {/* Compte à rebours */}
-                <CountdownTimer />
+                {ouvert ? (
+                  <>
+                    <div className="flex flex-wrap gap-3 mb-10">
+                      <Link href="/candidater" className="btn-primary">
+                        Déposer ma candidature
+                        <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden>
+                          <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+                        </svg>
+                      </Link>
+                      <Link href="/reglement" className="btn-ghost">
+                        Lire le règlement
+                      </Link>
+                    </div>
+                    <CountdownTimer />
+                  </>
+                ) : (
+                  <div className="flex flex-wrap gap-3 mb-10">
+                    <div className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-semibold bg-earth-100 border border-earth-400/30 text-earth-800">
+                      <svg width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden>
+                        <circle cx="8" cy="8" r="6.5" stroke="#8B2E2E" strokeWidth="1.5"/>
+                        <path d="M5.5 8a2.5 2.5 0 015 0M8 5.5V8" stroke="#8B2E2E" strokeWidth="1.5" strokeLinecap="round"/>
+                      </svg>
+                      Candidatures closes depuis le 15 oct. 2026
+                    </div>
+                    <Link href="/reglement" className="btn-ghost">
+                      Lire le règlement
+                    </Link>
+                  </div>
+                )}
               </div>
 
               {/* Droite — carte éligibilité */}
@@ -140,12 +159,24 @@ export default function Home() {
                       ))}
                     </ul>
                     <div className="mt-5 pt-4" style={{ borderTop: "1px solid #EBF7D4" }}>
-                      <Link href="/candidater" className="btn-primary w-full justify-center">
-                        Déposer ma candidature →
-                      </Link>
-                      <p className="text-2xs text-center mt-2" style={{ color: "rgba(45,96,48,0.45)" }}>
-                        Clôture le 15 octobre 2026 à 23h59
-                      </p>
+                      {ouvert ? (
+                        <>
+                          <Link href="/candidater" className="btn-primary w-full justify-center">
+                            Déposer ma candidature →
+                          </Link>
+                          <p className="text-2xs text-center mt-2" style={{ color: "rgba(45,96,48,0.45)" }}>
+                            Clôture le 15 octobre 2026 à 23h59
+                          </p>
+                        </>
+                      ) : (
+                        <div className="flex items-center gap-2 justify-center px-3 py-2.5 rounded-lg text-sm font-semibold bg-earth-100 border border-earth-400/30 text-earth-800">
+                          <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden>
+                            <circle cx="8" cy="8" r="6.5" stroke="#8B2E2E" strokeWidth="1.5"/>
+                            <path d="M5.5 8a2.5 2.5 0 015 0M8 5.5V8" stroke="#8B2E2E" strokeWidth="1.5" strokeLinecap="round"/>
+                          </svg>
+                          Candidatures closes — Finale le 5–6 nov.
+                        </div>
+                      )}
                     </div>
                   </div>
                 </div>
@@ -284,21 +315,40 @@ export default function Home() {
           <FloatingLeaf className="absolute animate-float-slow" style={{ width: 120, height: 160, top: -20, right: "5%", opacity: 0.2, animationDelay: "1s" }} />
           <FloatingLeaf className="absolute animate-float" style={{ width: 80, height: 110, bottom: -10, left: "4%", opacity: 0.15, animationDelay: "2s", transform: "rotate(-20deg) scaleX(-1)" }} />
           <div className="relative max-w-6xl mx-auto px-4 sm:px-6 text-center">
-            <div className="inline-flex items-center gap-2 mb-5 px-3 py-1.5 rounded-full text-xs font-bold" style={{ background: "rgba(140,198,63,0.2)", border: "1px solid rgba(140,198,63,0.3)", color: "#8CC63F" }}>
-              Candidatures ouvertes jusqu'au 15 octobre 2026
-            </div>
-            <h2 className="font-display font-black text-white mb-4" style={{ fontSize: "clamp(2rem,4vw,3rem)" }}>
-              Prêt à concourir ?
-            </h2>
-            <p className="text-leaf-100/70 text-base mb-8 max-w-lg mx-auto">
-              Comptez environ 20 minutes pour remplir le formulaire. Candidatures closes le 15 octobre 2026 à 23h59.
-            </p>
-            <Link href="/candidater" className="btn-primary inline-flex mx-auto" style={{ background: "#8B2E2E", boxShadow: "0 4px 20px rgba(139,46,46,0.4)" }}>
-              Déposer ma candidature
-              <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden>
-                <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
-            </Link>
+            {ouvert ? (
+              <>
+                <div className="inline-flex items-center gap-2 mb-5 px-3 py-1.5 rounded-full text-xs font-bold" style={{ background: "rgba(140,198,63,0.2)", border: "1px solid rgba(140,198,63,0.3)", color: "#8CC63F" }}>
+                  Candidatures ouvertes jusqu'au 15 octobre 2026
+                </div>
+                <h2 className="font-display font-black text-white mb-4" style={{ fontSize: "clamp(2rem,4vw,3rem)" }}>
+                  Prêt à concourir ?
+                </h2>
+                <p className="text-leaf-100/70 text-base mb-8 max-w-lg mx-auto">
+                  Comptez environ 20 minutes pour remplir le formulaire. Candidatures closes le 15 octobre 2026 à 23h59.
+                </p>
+                <Link href="/candidater" className="btn-primary inline-flex mx-auto" style={{ background: "#8B2E2E", boxShadow: "0 4px 20px rgba(139,46,46,0.4)" }}>
+                  Déposer ma candidature
+                  <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden>
+                    <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                </Link>
+              </>
+            ) : (
+              <>
+                <div className="inline-flex items-center gap-2 mb-5 px-3 py-1.5 rounded-full text-xs font-bold" style={{ background: "rgba(139,46,46,0.3)", border: "1px solid rgba(139,46,46,0.4)", color: "#f5a0a0" }}>
+                  Candidatures closes · Phase de jury en cours
+                </div>
+                <h2 className="font-display font-black text-white mb-4" style={{ fontSize: "clamp(2rem,4vw,3rem)" }}>
+                  Rendez-vous le 5–6 novembre 2026
+                </h2>
+                <p className="text-leaf-100/70 text-base mb-8 max-w-lg mx-auto">
+                  Les candidatures ont été clôturées le 15 octobre 2026. La finale et la remise des prix auront lieu à l'UTICA, Tunis.
+                </p>
+                <Link href="/reglement" className="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold text-sm text-white border border-white/30 hover:bg-white/10 transition-colors">
+                  Consulter le règlement
+                </Link>
+              </>
+            )}
           </div>
         </section>
       </main>

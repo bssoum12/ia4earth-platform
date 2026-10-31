@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
+import { isCandidatureOuverte } from "@/lib/dates";
 
 const NAV_LINKS = [
   { href: "/#calendrier", label: "Calendrier" },
@@ -14,6 +15,7 @@ const NAV_LINKS = [
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
+  const ouvert = isCandidatureOuverte();
 
   return (
     <header className="sticky top-0 z-50 bg-forest-900 border-b border-forest-800/60 backdrop-blur-sm">
@@ -48,12 +50,14 @@ export default function Navbar() {
 
         {/* CTA */}
         <div className="flex items-center gap-3">
-          <Link href="/candidater" className="btn-primary text-sm py-2 px-4 hidden sm:inline-flex">
-            Candidater
-            <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden>
-              <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
-          </Link>
+          {ouvert && (
+            <Link href="/candidater" className="btn-primary text-sm py-2 px-4 hidden sm:inline-flex">
+              Candidater
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden>
+                <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </Link>
+          )}
 
           {/* Burger mobile */}
           <button
@@ -83,13 +87,15 @@ export default function Navbar() {
                 {l.label}
               </Link>
             ))}
-            <Link
-              href="/candidater"
-              onClick={() => setOpen(false)}
-              className="btn-primary mt-3 justify-center"
-            >
-              Candidater →
-            </Link>
+            {ouvert && (
+              <Link
+                href="/candidater"
+                onClick={() => setOpen(false)}
+                className="btn-primary mt-3 justify-center"
+              >
+                Candidater →
+              </Link>
+            )}
           </nav>
         </div>
       )}
