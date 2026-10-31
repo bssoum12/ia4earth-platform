@@ -44,21 +44,22 @@ function ScoreStepper({
 }) {
   const display = value ?? 0;
   const pct = (display / max) * 100;
+  const isFull = pct === 100;
+  const isHigh = pct >= 70;
 
   return (
-    <div className="space-y-2">
-      <div className="flex items-center justify-between">
-        <label className="form-label !mb-0">
+    <div className="space-y-2.5">
+      <div className="flex items-center justify-between gap-3">
+        <label className="text-sm font-semibold text-forest-800 leading-tight flex-1">
           {label}
-          <span className="text-forest-700/40 font-normal"> / {max}</span>
+          <span className="text-forest-700/35 font-normal text-xs ml-1">/ {max} pts</span>
         </label>
-        <div className="flex items-center gap-2">
-          {/* Boutons +/- mobile-safe */}
+        <div className="flex items-center gap-1.5 shrink-0">
           <button
             type="button"
             disabled={disabled || display <= 0}
             onClick={() => onChange(Math.max(0, display - 1))}
-            className="w-8 h-8 rounded-lg border border-leaf-200 bg-white text-forest-700 font-bold text-lg flex items-center justify-center hover:bg-leaf-50 disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
+            className="w-8 h-8 rounded-lg border border-leaf-200 bg-white text-forest-700 font-bold flex items-center justify-center hover:bg-leaf-50 hover:border-leaf-300 disabled:opacity-25 disabled:cursor-not-allowed transition-colors text-base leading-none"
             aria-label={`Diminuer ${label}`}
           >
             −
@@ -74,14 +75,14 @@ function ScoreStepper({
               const v = parseInt(e.target.value, 10);
               if (!isNaN(v)) onChange(Math.min(max, Math.max(0, v)));
             }}
-            className="w-14 text-center font-mono font-bold text-lg text-forest-900 border border-leaf-200 rounded-lg py-1 focus:outline-none focus:ring-2 focus:ring-leaf-400 disabled:opacity-50 disabled:bg-leaf-50"
+            className="w-12 text-center font-mono font-bold text-base text-forest-900 border border-leaf-200 rounded-lg py-1.5 focus:outline-none focus:ring-2 focus:ring-leaf-400 focus:border-transparent disabled:opacity-40 disabled:bg-leaf-50/50 bg-white"
             aria-label={`Score ${label}`}
           />
           <button
             type="button"
             disabled={disabled || display >= max}
             onClick={() => onChange(Math.min(max, display + 1))}
-            className="w-8 h-8 rounded-lg border border-leaf-200 bg-white text-forest-700 font-bold text-lg flex items-center justify-center hover:bg-leaf-50 disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
+            className="w-8 h-8 rounded-lg border border-leaf-200 bg-white text-forest-700 font-bold flex items-center justify-center hover:bg-leaf-50 hover:border-leaf-300 disabled:opacity-25 disabled:cursor-not-allowed transition-colors text-base leading-none"
             aria-label={`Augmenter ${label}`}
           >
             +
@@ -89,15 +90,28 @@ function ScoreStepper({
         </div>
       </div>
 
-      {/* Barre de progression visuelle */}
-      <div className="relative h-2 bg-leaf-100 rounded-full overflow-hidden">
+      {/* Barre de progression */}
+      <div className="relative h-3 bg-leaf-50 border border-leaf-100 rounded-full overflow-hidden">
         <div
-          className={`h-full rounded-full transition-all duration-150 ${value != null ? "bg-leaf-400" : "bg-leaf-200"}`}
+          className={`h-full rounded-full transition-all duration-200 ${
+            value == null ? "bg-leaf-100" :
+            isFull ? "bg-leaf-500" :
+            isHigh ? "bg-leaf-400" :
+            "bg-circuit-500/70"
+          }`}
           style={{ width: `${pct}%` }}
         />
+        {value != null && pct > 0 && (
+          <div
+            className="absolute inset-y-0 flex items-center px-2 text-2xs font-mono font-bold text-white drop-shadow-sm"
+            style={{ left: `${Math.min(pct - 2, 78)}%` }}
+          >
+            {display}
+          </div>
+        )}
       </div>
 
-      {/* Curseur range en dessous — uniquement complémentaire, l'input numérique est la source de vérité */}
+      {/* Curseur range */}
       <input
         type="range"
         min={0}
@@ -106,7 +120,7 @@ function ScoreStepper({
         value={display}
         disabled={disabled}
         onChange={(e) => onChange(Number(e.target.value))}
-        className="w-full accent-leaf-400 disabled:opacity-40 cursor-pointer"
+        className="w-full accent-leaf-500 disabled:opacity-30 cursor-pointer h-1"
         aria-hidden="true"
         tabIndex={-1}
       />
@@ -138,9 +152,11 @@ export default function ScoringForm({ token, candidatureId, evaluation }: Props)
     setScores((s) => ({ ...s, [key]: v }));
   }
 
-  const allScoresFilled = CRITERES.every((c) => scores[c.key] != null);
+  const filled = CRITERES.filter((c) => scores[c.key] != null).length;
+  const allScoresFilled = filled === CRITERES.length;
+  const rawTotal = CRITERES.reduce((sum, c) => sum + (scores[c.key] ?? 0), 0);
   const scoreTotal = allScoresFilled && !conflit
-    ? Math.max(0, CRITERES.reduce((sum, c) => sum + (scores[c.key] ?? 0), 0) - penalite)
+    ? Math.max(0, rawTotal - penalite)
     : null;
 
   async function submit(finaliser: boolean) {
@@ -208,9 +224,14 @@ export default function ScoringForm({ token, candidatureId, evaluation }: Props)
 
   if (hasConflict) {
     return (
-      <div className="bg-earth-700/10 border border-earth-700/20 rounded-xl p-6 text-center">
-        <div className="text-earth-700 font-semibold text-lg mb-2">Conflit d&apos;intérêt déclaré</div>
-        <p className="text-forest-700/70 text-sm">
+      <div className="bg-white rounded-2xl border border-earth-200 p-6 text-center">
+        <div className="w-12 h-12 bg-earth-100 rounded-full flex items-center justify-center mx-auto mb-3">
+          <svg className="w-6 h-6 text-earth-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+          </svg>
+        </div>
+        <div className="text-earth-700 font-semibold text-base mb-1">Conflit d&apos;intérêt déclaré</div>
+        <p className="text-forest-700/60 text-sm max-w-xs mx-auto">
           Vous avez déclaré un conflit d&apos;intérêt pour cette candidature. Votre évaluation a été retirée automatiquement.
         </p>
       </div>
@@ -218,20 +239,22 @@ export default function ScoringForm({ token, candidatureId, evaluation }: Props)
   }
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-5">
       {/* Conflit d'intérêt */}
       {!isFinalized && (
-        <div className="surface-card border border-earth-700/20">
+        <div className={`bg-white rounded-2xl border p-4 transition-colors ${conflit ? "border-amber-300 bg-amber-50/50" : "border-leaf-100"}`}>
           <label className="flex items-start gap-3 cursor-pointer">
             <input
               type="checkbox"
               checked={conflit}
               onChange={(e) => setConflit(e.target.checked)}
-              className="mt-1 w-4 h-4 accent-earth-700"
+              className="mt-0.5 w-4 h-4 accent-amber-600 rounded"
             />
             <div>
-              <div className="font-semibold text-earth-700">Déclarer un conflit d&apos;intérêt</div>
-              <div className="text-sm text-forest-700/70 mt-0.5">
+              <div className={`font-semibold text-sm ${conflit ? "text-amber-700" : "text-forest-900"}`}>
+                Déclarer un conflit d&apos;intérêt
+              </div>
+              <div className="text-xs text-forest-700/60 mt-0.5 leading-relaxed">
                 Si vous avez un lien personnel, professionnel ou financier avec cette startup, cochez cette case.
                 Votre évaluation sera retirée automatiquement.
               </div>
@@ -243,70 +266,93 @@ export default function ScoringForm({ token, candidatureId, evaluation }: Props)
       {/* Scoring grid */}
       {!conflit && (
         <>
-          <div className="surface-card space-y-7">
-            <h3 className="font-display font-semibold text-forest-900 text-lg">Grille d&apos;évaluation</h3>
-            {CRITERES.map((critere) => (
-              <ScoreStepper
-                key={critere.key}
-                label={critere.label}
-                max={critere.max}
-                value={scores[critere.key] ?? null}
-                disabled={isFinalized}
-                onChange={(v) => setScore(critere.key, v)}
-              />
-            ))}
+          <div className="bg-white rounded-2xl border border-leaf-100 p-5 space-y-6">
+            {/* En-tête avec compteur */}
+            <div className="flex items-center justify-between">
+              <h3 className="font-display font-semibold text-forest-900">Grille d&apos;évaluation</h3>
+              <div className={`flex items-center gap-1.5 text-xs font-semibold px-2.5 py-1 rounded-full ${
+                allScoresFilled
+                  ? "bg-leaf-100 text-forest-700 border border-leaf-200"
+                  : "bg-leaf-50 text-forest-700/50 border border-leaf-100"
+              }`}>
+                <span className={`w-4 h-4 rounded-full flex items-center justify-center text-2xs ${
+                  allScoresFilled ? "bg-leaf-500 text-white" : "bg-leaf-100 text-forest-700/40"
+                }`}>
+                  {allScoresFilled ? "✓" : filled}
+                </span>
+                {allScoresFilled ? "Complet" : `${filled} / ${CRITERES.length}`}
+              </div>
+            </div>
 
-            {/* Indicateur critères complétés */}
-            <div className="flex items-center gap-2 pt-2 border-t border-leaf-100 text-sm text-forest-700/60">
-              <span className={`w-5 h-5 rounded-full flex items-center justify-center text-xs font-bold ${allScoresFilled ? "bg-leaf-400 text-forest-900" : "bg-leaf-100 text-forest-700/40"}`}>
-                {allScoresFilled ? "✓" : `${CRITERES.filter((c) => scores[c.key] != null).length}/${CRITERES.length}`}
-              </span>
-              <span>{allScoresFilled ? "Tous les critères notés" : "Critères à compléter"}</span>
+            <div className="space-y-7">
+              {CRITERES.map((critere) => (
+                <ScoreStepper
+                  key={critere.key}
+                  label={critere.label}
+                  max={critere.max}
+                  value={scores[critere.key] ?? null}
+                  disabled={isFinalized}
+                  onChange={(v) => setScore(critere.key, v)}
+                />
+              ))}
             </div>
           </div>
 
           {/* Pénalité */}
-          <div className="surface-card">
-            <label className="form-label">Pénalité délai de présentation <span className="text-forest-700/40 font-normal">(points à retrancher)</span></label>
-            <div className="flex items-center gap-3">
-              <button
-                type="button"
-                disabled={isFinalized || penalite <= 0}
-                onClick={() => setPenalite((p) => Math.max(0, p - 1))}
-                className="w-8 h-8 rounded-lg border border-leaf-200 bg-white text-forest-700 font-bold text-lg flex items-center justify-center hover:bg-leaf-50 disabled:opacity-30 disabled:cursor-not-allowed"
-              >−</button>
-              <span className="font-mono font-bold text-xl text-forest-900 w-8 text-center">{penalite}</span>
-              <button
-                type="button"
-                disabled={isFinalized}
-                onClick={() => setPenalite((p) => p + 1)}
-                className="w-8 h-8 rounded-lg border border-leaf-200 bg-white text-forest-700 font-bold text-lg flex items-center justify-center hover:bg-leaf-50 disabled:opacity-30 disabled:cursor-not-allowed"
-              >+</button>
+          <div className="bg-white rounded-2xl border border-leaf-100 p-5">
+            <div className="flex items-center justify-between mb-1">
+              <label className="text-sm font-semibold text-forest-900">
+                Pénalité délai
+                <span className="text-forest-700/40 font-normal text-xs ml-1">(points à retrancher)</span>
+              </label>
+              <div className="flex items-center gap-2">
+                <button
+                  type="button"
+                  disabled={isFinalized || penalite <= 0}
+                  onClick={() => setPenalite((p) => Math.max(0, p - 1))}
+                  className="w-8 h-8 rounded-lg border border-leaf-200 bg-white text-forest-700 font-bold flex items-center justify-center hover:bg-leaf-50 disabled:opacity-25 disabled:cursor-not-allowed"
+                >−</button>
+                <span className="font-mono font-bold text-xl text-forest-900 w-8 text-center">{penalite}</span>
+                <button
+                  type="button"
+                  disabled={isFinalized}
+                  onClick={() => setPenalite((p) => p + 1)}
+                  className="w-8 h-8 rounded-lg border border-leaf-200 bg-white text-forest-700 font-bold flex items-center justify-center hover:bg-leaf-50 disabled:opacity-25 disabled:cursor-not-allowed"
+                >+</button>
+              </div>
             </div>
-            <p className="form-hint mt-2">Applicable uniquement en finale si le temps imparti n&apos;a pas été respecté.</p>
+            <p className="text-xs text-forest-700/45 mt-2">Applicable uniquement en finale si le temps imparti n&apos;a pas été respecté.</p>
           </div>
 
           {/* Score total */}
           {scoreTotal != null && (
-            <div className="bg-forest-900 text-white rounded-xl p-4 flex items-center justify-between">
+            <div
+              className="rounded-2xl p-5 flex items-center justify-between"
+              style={{ background: "linear-gradient(135deg, #062B24 0%, #0F5A45 100%)" }}
+            >
               <div>
-                <div className="font-display font-semibold text-base">Score total provisoire</div>
+                <div className="text-white/60 text-xs font-mono uppercase tracking-wider mb-0.5">Score total provisoire</div>
                 {penalite > 0 && (
-                  <div className="text-white/50 text-xs mt-0.5">
-                    {CRITERES.reduce((s, c) => s + (scores[c.key] ?? 0), 0)} pts − {penalite} pts pénalité
+                  <div className="text-white/40 text-sm font-normal font-mono mt-0.5">
+                    {rawTotal} − {penalite} pén.
                   </div>
                 )}
               </div>
-              <span className="text-4xl font-mono font-bold text-leaf-400">
-                {scoreTotal} <span className="text-xl text-white/50">/ 100</span>
-              </span>
+              <div className="text-right">
+                <span className="font-mono font-bold text-leaf-400" style={{ fontSize: "3rem", lineHeight: 1 }}>
+                  {scoreTotal}
+                </span>
+                <span className="text-white/35 font-mono text-xl"> / 100</span>
+              </div>
             </div>
           )}
 
           {/* Commentaires */}
-          <div className="surface-card space-y-4">
-            <h3 className="font-display font-semibold text-forest-900">Commentaires qualitatifs</h3>
-            <p className="text-xs text-forest-700/50 -mt-2">Ces commentaires sont strictement confidentiels — ils ne seront jamais communiqués aux candidats (Art. 7.2).</p>
+          <div className="bg-white rounded-2xl border border-leaf-100 p-5 space-y-4">
+            <div>
+              <h3 className="font-display font-semibold text-forest-900">Commentaires qualitatifs</h3>
+              <p className="text-xs text-forest-700/45 mt-0.5">Strictement confidentiels — jamais communiqués aux candidats (Art. 7.2).</p>
+            </div>
             <div>
               <label className="form-label">Points forts</label>
               <textarea
@@ -334,7 +380,10 @@ export default function ScoringForm({ token, candidatureId, evaluation }: Props)
               <p className="form-hint text-right">{pointsVigilance.length}/1000</p>
             </div>
             <div>
-              <label className="form-label">Commentaire général <span className="text-forest-700/40 font-normal">(optionnel)</span></label>
+              <label className="form-label">
+                Commentaire général
+                <span className="text-forest-700/40 font-normal"> (optionnel)</span>
+              </label>
               <textarea
                 rows={4}
                 value={commentaires}
@@ -352,7 +401,7 @@ export default function ScoringForm({ token, candidatureId, evaluation }: Props)
 
       {/* Erreur */}
       {error && (
-        <div className="p-3 bg-earth-700/10 border border-earth-700/30 rounded-lg text-earth-700 text-sm" role="alert">
+        <div className="p-3 bg-red-50 border border-red-200 rounded-xl text-red-700 text-sm" role="alert">
           {error}
         </div>
       )}
@@ -364,7 +413,7 @@ export default function ScoringForm({ token, candidatureId, evaluation }: Props)
             <button
               onClick={() => submit(true)}
               disabled={submitting}
-              className="btn-primary !bg-earth-700 hover:!bg-earth-700/90"
+              className="px-5 py-2.5 bg-amber-600 hover:bg-amber-700 text-white font-semibold rounded-xl transition-colors disabled:opacity-50"
             >
               {submitting ? "Enregistrement…" : "Confirmer le conflit d'intérêt"}
             </button>
@@ -391,8 +440,12 @@ export default function ScoringForm({ token, candidatureId, evaluation }: Props)
       )}
 
       {isFinalized && (
-        <div className="p-4 bg-leaf-50 border border-leaf-100 rounded-xl text-forest-700 text-sm flex items-center gap-2">
-          <span className="text-leaf-400 text-lg">✓</span>
+        <div className="p-4 bg-leaf-50 border border-leaf-200 rounded-xl text-forest-700 text-sm flex items-center gap-2.5">
+          <div className="w-6 h-6 bg-leaf-400 rounded-full flex items-center justify-center flex-none">
+            <svg className="w-3.5 h-3.5 text-forest-900" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+            </svg>
+          </div>
           Cette évaluation est finalisée et ne peut plus être modifiée.
         </div>
       )}
